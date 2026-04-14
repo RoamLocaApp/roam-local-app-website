@@ -25,6 +25,11 @@ img{display:block;max-width:100%;}
   --red-deep:#a01040;
   --red-light:#e8557a;
   --red-pale:#fde8ee;
+  --blue:#3abdd6;
+  --blue-deep:#1e8fa6;
+  --blue-dark:#0a3a45;
+  --blue-mid:#0d5c6e;
+  --blue-pale:#e6f7fb;
   --off:#f5f0f1;
   --border:#e8e0e2;
   --muted:#777;
@@ -121,7 +126,7 @@ nav{
   display:flex;align-items:center;justify-content:center;
 }
 .check-dot.on-light{background:var(--red-pale);}
-.check-dot.on-dark{background:rgba(201,27,82,0.25);}
+.check-dot.on-dark{background:rgba(58,189,214,0.18);}
 .check-dot svg{width:9px;height:9px;}
 
 /* ─── PROOF BAR ────────────────────────────────── */
@@ -243,17 +248,17 @@ footer{background:#100008;padding:48px 40px 28px;}
   display:flex;flex-direction:column;
 }
 .for-card.explorer{background:var(--off);border:1px solid var(--border);}
-.for-card.business{background:var(--plum);border:1px solid rgba(201,27,82,0.2);}
+.for-card.business{background:var(--blue-dark);border:1px solid rgba(58,189,214,0.2);}
 .for-card-icon{
   width:44px;height:44px;border-radius:12px;
   display:flex;align-items:center;justify-content:center;margin-bottom:18px;
 }
 .for-card.explorer .for-card-icon{background:var(--red-pale);}
-.for-card.business .for-card-icon{background:rgba(201,27,82,0.2);}
+.for-card.business .for-card-icon{background:rgba(58,189,214,0.15);}
 .for-card-icon svg{width:22px;height:22px;}
 .for-card-label{font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:0.8px;margin-bottom:8px;}
 .for-card.explorer .for-card-label{color:var(--red-deep);}
-.for-card.business .for-card-label{color:var(--red-light);}
+.for-card.business .for-card-label{color:var(--blue);}
 .for-card-title{font-size:20px;font-weight:700;line-height:1.25;margin-bottom:10px;}
 .for-card.explorer .for-card-title{color:var(--plum);}
 .for-card.business .for-card-title{color:#fff;}
@@ -286,14 +291,14 @@ footer{background:#100008;padding:48px 40px 28px;}
 
 /* ── SECTION 4: STATS BAR ── */
 .stats{
-  background:var(--red-dark);padding:28px 40px;
+  background:var(--blue-dark);padding:28px 40px;
   display:flex;justify-content:space-around;align-items:center;
   flex-wrap:wrap;gap:14px;
 }
 .stat-item{text-align:center;}
 .stat-n{font-size:26px;font-weight:700;color:#fff;}
 .stat-l{font-size:11px;color:rgba(255,255,255,0.5);margin-top:2px;}
-.stat-sep{width:1px;height:32px;background:rgba(255,255,255,0.15);}
+.stat-sep{width:1px;height:32px;background:rgba(58,189,214,0.2);}
 
 /* ── SECTION 5: BUSINESS ACTIVATION ── */
 .activate-section{background:#fff;padding:80px 40px;}
@@ -305,7 +310,7 @@ footer{background:#100008;padding:48px 40px 28px;}
 .step{display:flex;gap:15px;align-items:flex-start;}
 .step-num{
   width:32px;height:32px;border-radius:50%;
-  background:var(--red);color:#fff;
+  background:var(--blue);color:var(--blue-mid);font-weight:700;
   font-size:13px;font-weight:700;
   display:flex;align-items:center;justify-content:center;flex-shrink:0;
 }
@@ -314,13 +319,16 @@ footer{background:#100008;padding:48px 40px 28px;}
 .store-btns{display:flex;gap:10px;flex-wrap:wrap;}
 .store-btn{
   display:flex;align-items:center;gap:10px;
-  background:var(--plum);color:#fff;
+  background:var(--blue);color:var(--blue-mid);font-weight:600;
   font-size:12px;font-weight:500;padding:10px 18px;
   border-radius:var(--r);cursor:pointer;transition:background 0.15s;
 }
-.store-btn:hover{background:#2d0a1a;}
-.store-btn.android{background:var(--red-dark);}
-.store-btn.android:hover{background:#4a0a1e;}
+.store-btn:hover{background:var(--blue-deep);color:#fff;}
+.store-img-btn{display:inline-block;cursor:pointer;}
+.store-img-btn img{transition:opacity 0.15s;}
+.store-img-btn:hover img{opacity:0.85;}
+.store-btn.android{background:var(--blue-mid);color:#fff;font-weight:500;}
+.store-btn.android:hover{background:#0a3a45;}
 .store-btn svg{width:16px;height:16px;flex-shrink:0;}
 .store-btn-text span{display:block;font-size:9px;opacity:0.55;font-weight:400;}
 .activate-phone{
@@ -369,7 +377,7 @@ footer{background:#100008;padding:48px 40px 28px;}
   display:flex;align-items:center;gap:6px;
   font-size:12px;color:rgba(255,255,255,0.4);
 }
-.biz-trust-dot{width:5px;height:5px;border-radius:50%;background:var(--red);flex-shrink:0;}
+.biz-trust-dot{width:5px;height:5px;border-radius:50%;background:var(--blue);flex-shrink:0;}
 
 .toolkit-section{background:#fff;padding:80px 40px;}
 .toolkit-grid{
@@ -383,15 +391,15 @@ footer{background:#100008;padding:48px 40px 28px;}
 .toolkit-card:hover{box-shadow:0 6px 24px rgba(107,15,43,0.08);transform:translateY(-2px);}
 .toolkit-card-icon{
   width:40px;height:40px;border-radius:10px;
-  background:var(--red-pale);display:flex;align-items:center;justify-content:center;
+  background:var(--blue-pale);display:flex;align-items:center;justify-content:center;
   margin-bottom:14px;
 }
-.toolkit-card-icon svg{width:20px;height:20px;}
+.toolkit-card-icon svg{width:20px;height:20px;} .toolkit-card-icon svg path,.toolkit-card-icon svg rect,.toolkit-card-icon svg circle{stroke:#1e8fa6;} .toolkit-card-icon svg [fill="#c91b52"]{fill:#3abdd6;}
 .toolkit-card-title{font-size:14px;font-weight:700;color:var(--plum);margin-bottom:6px;}
 .toolkit-card-desc{font-size:13px;color:var(--muted);line-height:1.6;}
 
 .push-section{
-  background:var(--red-dark);padding:64px 40px;
+  background:var(--blue-dark);padding:64px 40px;
   display:flex;align-items:center;gap:60px;
 }
 .push-text{flex:1;}
@@ -410,7 +418,7 @@ footer{background:#100008;padding:48px 40px 28px;}
 }
 .push-notif-ic{
   width:28px;height:28px;border-radius:7px;
-  background:var(--red);display:flex;align-items:center;justify-content:center;flex-shrink:0;
+  background:var(--blue);display:flex;align-items:center;justify-content:center;flex-shrink:0;
 }
 .push-notif-ic svg{width:14px;height:14px;}
 .push-notif-title{font-size:11px;font-weight:700;color:var(--plum);}
@@ -505,17 +513,17 @@ footer{background:#100008;padding:48px 40px 28px;}
   background:#fff;outline:none;transition:border-color 0.15s,box-shadow 0.15s;
 }
 .form-input:focus,.form-select:focus,.form-textarea:focus{
-  border-color:var(--red);box-shadow:0 0 0 3px rgba(201,27,82,0.07);
+  border-color:var(--blue);box-shadow:0 0 0 3px rgba(58,189,214,0.1);
 }
 .form-textarea{min-height:110px;resize:vertical;}
 .form-select{appearance:none;cursor:pointer;}
 .form-submit{
-  width:100%;background:var(--red);color:#fff;
+  width:100%;background:var(--blue);color:var(--blue-mid);font-weight:700;
   font-family:'DM Sans',sans-serif;font-size:14px;font-weight:700;
   padding:12px;border:none;border-radius:var(--r);
   cursor:pointer;transition:background 0.15s;margin-top:4px;
 }
-.form-submit:hover{background:var(--red-deep);}
+.form-submit:hover{background:var(--blue-deep);color:#fff;}
 .form-note{font-size:11px;color:#bbb;text-align:center;margin-top:10px;}
 .faq-banner{background:var(--off);padding:48px 40px;border-top:1px solid var(--border);text-align:center;}
 .faq-banner h2{font-size:22px;font-weight:700;color:var(--plum);margin-bottom:8px;}
@@ -735,7 +743,7 @@ footer{background:#100008;padding:48px 40px 28px;}
       <span class="nav-link" id="nl-contact"  onclick="showPage('contact')">Contact</span>
     </div>
     <div class="nav-btns">
-      <span class="btn-nav-ghost" onclick="showPage('business')">List your business</span>
+      <span class="btn-nav-ghost" onclick="showPage('business')" style="border-color:rgba(58,189,214,0.5);color:#3abdd6;">List your business</span>
       <span class="btn-nav-solid" onclick="showPage('home');setTimeout(()=>document.getElementById('sec-download').scrollIntoView({behavior:'smooth'}),80)">Download app</span>
     </div>
     <button class="nav-hamburger" id="hamburger" aria-label="Open menu" onclick="toggleMenu()">
@@ -750,7 +758,7 @@ footer{background:#100008;padding:48px 40px 28px;}
   <span class="mobile-nav-link" id="mnl-about"    onclick="showPage('about');closeMenu()">About</span>
   <span class="mobile-nav-link" id="mnl-contact"  onclick="showPage('contact');closeMenu()">Contact</span>
   <div class="mobile-nav-btns">
-    <button class="btn-red" onclick="showPage('business');closeMenu()">List your business</button>
+    <button class="btn-red" onclick="showPage('business');closeMenu()" style="background:#3abdd6;color:#0d5c6e;">List your business</button>
     <button class="btn-outline-dark" onclick="showPage('home');closeMenu();setTimeout(()=>document.getElementById('sec-download').scrollIntoView({behavior:'smooth'}),80)">Download app</button>
   </div>
 </div>
@@ -770,7 +778,7 @@ footer{background:#100008;padding:48px 40px 28px;}
     <p class="hero-sub">Roam connects everyday explorers with great local businesses — and gives business owners the tools to be found, grow, and thrive in their community.</p>
     <div class="hero-btns">
       <button class="btn-red" onclick="document.getElementById('sec-download').scrollIntoView({behavior:'smooth'})">Download the app</button>
-      <button class="btn-outline" onclick="showPage('business')">Add your business</button>
+      <button class="btn-outline" onclick="showPage('business')" style="border-color:rgba(58,189,214,0.55);color:#3abdd6;">Add your business</button>
     </div>
     <!-- PHONE FAN
          To use your own screenshots, upload them to your GitHub repo and
@@ -827,12 +835,12 @@ footer{background:#100008;padding:48px 40px 28px;}
           <div class="for-card-title">Activate your digital presence</div>
           <p class="for-card-desc">Join the digital high street. Reach local people and visitors already looking for places like yours — zero cost to get started, live in about 90 seconds.</p>
           <div class="for-card-checks check-list">
-            <div class="check-item dark"><div class="check-dot on-dark"><svg viewBox="0 0 9 9" fill="none"><path d="M1.5 4.5l2 2 4-4" stroke="#e8557a" stroke-width="1.4" stroke-linecap="round"/></svg></div>Live profile, offers &amp; event publishing</div>
-            <div class="check-item dark"><div class="check-dot on-dark"><svg viewBox="0 0 9 9" fill="none"><path d="M1.5 4.5l2 2 4-4" stroke="#e8557a" stroke-width="1.4" stroke-linecap="round"/></svg></div>Push notifications to nearby customers</div>
-            <div class="check-item dark"><div class="check-dot on-dark"><svg viewBox="0 0 9 9" fill="none"><path d="M1.5 4.5l2 2 4-4" stroke="#e8557a" stroke-width="1.4" stroke-linecap="round"/></svg></div>Data insights &amp; business analytics</div>
-            <div class="check-item dark"><div class="check-dot on-dark"><svg viewBox="0 0 9 9" fill="none"><path d="M1.5 4.5l2 2 4-4" stroke="#e8557a" stroke-width="1.4" stroke-linecap="round"/></svg></div>Free to activate — no contracts</div>
+            <div class="check-item dark" style="color:rgba(255,255,255,0.65);"><div class="check-dot on-dark"><svg viewBox="0 0 9 9" fill="none"><path d="M1.5 4.5l2 2 4-4" stroke="#3abdd6" stroke-width="1.4" stroke-linecap="round"/></svg></div>Live profile, offers &amp; event publishing</div>
+            <div class="check-item dark" style="color:rgba(255,255,255,0.65);"><div class="check-dot on-dark"><svg viewBox="0 0 9 9" fill="none"><path d="M1.5 4.5l2 2 4-4" stroke="#3abdd6" stroke-width="1.4" stroke-linecap="round"/></svg></div>Push notifications to nearby customers</div>
+            <div class="check-item dark" style="color:rgba(255,255,255,0.65);"><div class="check-dot on-dark"><svg viewBox="0 0 9 9" fill="none"><path d="M1.5 4.5l2 2 4-4" stroke="#3abdd6" stroke-width="1.4" stroke-linecap="round"/></svg></div>Data insights &amp; business analytics</div>
+            <div class="check-item dark" style="color:rgba(255,255,255,0.65);"><div class="check-dot on-dark"><svg viewBox="0 0 9 9" fill="none"><path d="M1.5 4.5l2 2 4-4" stroke="#3abdd6" stroke-width="1.4" stroke-linecap="round"/></svg></div>Free to activate — no contracts</div>
           </div>
-          <button class="btn-outline" onclick="showPage('business')">Activate your business &rarr;</button>
+          <button class="btn-outline" onclick="showPage('business')" style="border-color:rgba(58,189,214,0.5);color:#3abdd6;">Activate your business &rarr;</button>
         </div>
       </div>
     </div>
@@ -904,13 +912,11 @@ footer{background:#100008;padding:48px 40px 28px;}
           <div class="step"><div class="step-num">3</div><div><div class="step-title">Verify &amp; go live</div><div class="step-desc">Confirm ownership, customise your profile, and start reaching customers.</div></div></div>
         </div>
         <div class="store-btns">
-          <a href="https://itunes.apple.com/us/app/roarapp/id1137901874" class="store-btn">
-            <svg viewBox="0 0 16 16" fill="none"><path d="M8 2v9M4.5 7.5L8 11l3.5-3.5" stroke="#fff" stroke-width="1.4" stroke-linecap="round"/><path d="M2 13h12" stroke="#fff" stroke-width="1.4" stroke-linecap="round"/></svg>
-            <div class="store-btn-text"><span>Download on</span>App Store</div>
+          <a href="https://apps.apple.com/us/app/roarapp/id1137901874?ls=1" style="display:inline-block;line-height:0;">
+            <img src="https://raw.githubusercontent.com/RoamLocaApp/roam-local-app-website/main/Roam-Logos/apple-app-store-icon.png" alt="Download on the App Store" style="height:44px;width:auto;display:block;border-radius:8px;"/>
           </a>
-          <a href="https://play.google.com/store/apps/details?id=com.roar.app" class="store-btn android">
-            <svg viewBox="0 0 16 16" fill="none"><path d="M8 2v9M4.5 7.5L8 11l3.5-3.5" stroke="#fff" stroke-width="1.4" stroke-linecap="round"/><path d="M2 13h12" stroke="#fff" stroke-width="1.4" stroke-linecap="round"/></svg>
-            <div class="store-btn-text"><span>Download on</span>Google Play</div>
+          <a href="https://play.google.com/store/apps/details?id=com.roar.app" style="display:inline-block;line-height:0;">
+            <img src="https://raw.githubusercontent.com/RoamLocaApp/roam-local-app-website/main/Roam-Logos/android-app-store-icon.png" alt="Get it on Google Play" style="height:44px;width:auto;display:block;border-radius:8px;"/>
           </a>
         </div>
         <p style="font-size:12px;color:#ccc;margin-top:12px;">Free to activate · No contract · Activation done via app</p>
@@ -950,12 +956,12 @@ footer{background:#100008;padding:48px 40px 28px;}
   <section class="biz-hero">
     <div class="hero-ring" style="width:500px;height:500px;"></div>
     <div class="hero-ring" style="width:800px;height:800px;opacity:0.5;"></div>
-    <div class="hero-pill" style="position:relative;">For business owners</div>
+    <div class="hero-pill" style="position:relative;border-color:rgba(58,189,214,0.4);color:#3abdd6;">For business owners</div>
     <h1>Empowering <em>local</em> success</h1>
     <p class="biz-hero-sub">Roam for Business is your all-in-one digital marketing solution — designed to help local businesses thrive by connecting you directly with engaged customers in your area.</p>
     <div class="biz-hero-btns">
-      <button class="btn-red" onclick="document.getElementById('biz-activate').scrollIntoView({behavior:'smooth'})">Activate your business</button>
-      <button class="btn-outline" onclick="document.getElementById('biz-toolkit').scrollIntoView({behavior:'smooth'})">See what&apos;s included</button>
+      <button class="btn-red" onclick="document.getElementById('biz-activate').scrollIntoView({behavior:'smooth'})" style="background:var(--blue);color:var(--blue-mid);font-weight:700;">Activate your business</button>
+      <button class="btn-outline" onclick="document.getElementById('biz-toolkit').scrollIntoView({behavior:'smooth'})" style="border-color:rgba(58,189,214,0.5);color:#3abdd6;">See what&apos;s included</button>
     </div>
     <div class="biz-trust">
       <div class="biz-trust-item"><div class="biz-trust-dot"></div>Free to get started</div>
@@ -983,7 +989,7 @@ footer{background:#100008;padding:48px 40px 28px;}
 
   <div class="push-section">
     <div class="push-text">
-      <div class="tag light" style="margin-bottom:10px;">Reach customers directly</div>
+      <div class="tag" style="margin-bottom:10px;color:var(--blue);">Reach customers directly</div>
       <h2>Send customer push notifications — instantly</h2>
       <p>Whether it's a flash sale, a new menu, or a last-minute event — put your message in front of nearby customers the moment it matters most. No algorithms, no waiting.</p>
     </div>
@@ -1000,7 +1006,7 @@ footer{background:#100008;padding:48px 40px 28px;}
         <div class="tag">Business Service Hub</div>
         <div class="h2">Business in a box</div>
         <p class="lead" style="margin-top:8px;margin-bottom:24px;">Gold Members get access to a broader toolkit that supports the day-to-day running of their business — all in one place.</p>
-        <button class="btn-red" onclick="document.getElementById('biz-activate').scrollIntoView({behavior:'smooth'})">Get started free</button>
+        <button class="btn-red" onclick="document.getElementById('biz-activate').scrollIntoView({behavior:'smooth'})" style="background:var(--blue);color:var(--blue-mid);font-weight:700;">Get started free</button>
       </div>
       <div class="hub-tools">
         <div class="hub-tool"><div class="hub-tool-ic"><svg viewBox="0 0 16 16" fill="none"><rect x="2" y="2" width="12" height="12" rx="2" stroke="#c91b52" stroke-width="1.2"/><path d="M5 8h6M5 5h4M5 11h5" stroke="#c91b52" stroke-width="1" stroke-linecap="round"/></svg></div><div><div class="hub-tool-name">Accounting tools</div><div class="hub-tool-desc">Streamline your books</div></div></div>
@@ -1014,7 +1020,7 @@ footer{background:#100008;padding:48px 40px 28px;}
   <section class="biz-activate-section" id="biz-activate">
     <div class="biz-activate-inner container">
       <div>
-        <div class="tag">Getting started</div>
+        <div class="tag" style="color:var(--blue-deep);">Getting started</div>
         <div class="h2">Live in about 90 seconds</div>
         <p class="lead" style="margin-top:8px;">Everything is done inside the Roam app. Download it, find your business profile, and claim it in a few simple taps — no web forms, no waiting, no contract.</p>
         <div class="steps" style="margin-top:28px;">
@@ -1023,10 +1029,14 @@ footer{background:#100008;padding:48px 40px 28px;}
           <div class="step"><div class="step-num">3</div><div><div class="step-title">Verify &amp; go live</div><div class="step-desc">Confirm ownership and immediately start reaching local customers.</div></div></div>
         </div>
         <div class="store-btns" style="margin-top:28px;">
-          <a href="https://itunes.apple.com/us/app/roarapp/id1137901874" class="store-btn"><svg viewBox="0 0 16 16" fill="none"><path d="M8 2v9M4.5 7.5L8 11l3.5-3.5" stroke="#fff" stroke-width="1.4" stroke-linecap="round"/><path d="M2 13h12" stroke="#fff" stroke-width="1.4" stroke-linecap="round"/></svg><div class="store-btn-text"><span>Download on</span>App Store</div></a>
-          <a href="https://play.google.com/store/apps/details?id=com.roar.app" class="store-btn android"><svg viewBox="0 0 16 16" fill="none"><path d="M8 2v9M4.5 7.5L8 11l3.5-3.5" stroke="#fff" stroke-width="1.4" stroke-linecap="round"/><path d="M2 13h12" stroke="#fff" stroke-width="1.4" stroke-linecap="round"/></svg><div class="store-btn-text"><span>Download on</span>Google Play</div></a>
+          <a href="https://apps.apple.com/us/app/roarapp/id1137901874?ls=1" style="display:inline-block;line-height:0;">
+            <img src="https://raw.githubusercontent.com/RoamLocaApp/roam-local-app-website/main/Roam-Logos/apple-app-store-icon.png" alt="Download on the App Store" style="height:44px;width:auto;display:block;border-radius:8px;"/>
+          </a>
+          <a href="https://play.google.com/store/apps/details?id=com.roar.app" style="display:inline-block;line-height:0;">
+            <img src="https://raw.githubusercontent.com/RoamLocaApp/roam-local-app-website/main/Roam-Logos/android-app-store-icon.png" alt="Get it on Google Play" style="height:44px;width:auto;display:block;border-radius:8px;"/>
+          </a>
         </div>
-        <p style="font-size:12px;color:#bbb;margin-top:12px;">Questions? <span onclick="showPage('contact')" style="color:var(--red);cursor:pointer;">Get in touch</span></p>
+        <p style="font-size:12px;color:#bbb;margin-top:12px;">Questions? <span onclick="showPage('contact')" style="color:var(--blue);cursor:pointer;">Get in touch</span></p>
       </div>
       <div style="display:flex;justify-content:center;">
         <div class="phone-frame" style="width:240px;border-radius:36px;border:2px solid rgba(0,0,0,0.08);box-shadow:0 20px 56px rgba(107,15,43,0.12);">
@@ -1040,24 +1050,24 @@ footer{background:#100008;padding:48px 40px 28px;}
     <div class="hero-ring" style="width:500px;height:500px;"></div>
     <div class="hero-ring" style="width:800px;height:800px;opacity:0.5;"></div>
     <div class="cta-inner">
-      <div class="tag light" style="text-align:center;">Join the network</div>
+      <div class="tag" style="text-align:center;color:var(--blue);">Join the network</div>
       <div class="cta-h">Growing with businesses like yours</div>
       <p class="cta-sub">Whether you're running a café, boutique, bar, or cultural venue — Roam gives you the tools to connect with your community. Let's grow together.</p>
       <div class="cta-btns">
-        <button class="btn-red" style="font-size:15px;padding:13px 28px;" onclick="document.getElementById('biz-activate').scrollIntoView({behavior:'smooth'})">Activate your business free</button>
+        <button class="btn-red" style="font-size:15px;padding:13px 28px;background:var(--blue);color:var(--blue-mid);font-weight:700;" onclick="document.getElementById('biz-activate').scrollIntoView({behavior:'smooth'})">Activate your business free</button>
         <button class="btn-outline" style="font-size:15px;padding:13px 28px;" onclick="showPage('contact')">Talk to the team</button>
       </div>
     </div>
   </section>
 
-  <div class="proof">
-    <div class="proof-item"><div class="proof-n">Free</div><div class="proof-l">to activate</div></div>
-    <div class="proof-sep"></div>
-    <div class="proof-item"><div class="proof-n">~90s</div><div class="proof-l">to go live</div></div>
-    <div class="proof-sep"></div>
-    <div class="proof-item"><div class="proof-n">0</div><div class="proof-l">contracts needed</div></div>
-    <div class="proof-sep"></div>
-    <div class="proof-item"><div class="proof-n">Gold</div><div class="proof-l">membership for more tools</div></div>
+  <div class="proof" style="background:var(--blue-dark);">
+    <div class="proof-item"><div class="proof-n">Free</div><div class="proof-l" style="color:rgba(58,189,214,0.5);">to activate</div></div>
+    <div class="proof-sep" style="background:rgba(58,189,214,0.15);"></div>
+    <div class="proof-item"><div class="proof-n">~90s</div><div class="proof-l" style="color:rgba(58,189,214,0.5);">to go live</div></div>
+    <div class="proof-sep" style="background:rgba(58,189,214,0.15);"></div>
+    <div class="proof-item"><div class="proof-n">0</div><div class="proof-l" style="color:rgba(58,189,214,0.5);">contracts needed</div></div>
+    <div class="proof-sep" style="background:rgba(58,189,214,0.15);"></div>
+    <div class="proof-item"><div class="proof-n">Gold</div><div class="proof-l" style="color:rgba(58,189,214,0.5);">membership for more tools</div></div>
   </div>
 
 </div><!-- /page-business -->
@@ -1179,7 +1189,7 @@ footer{background:#100008;padding:48px 40px 28px;}
   <div class="faq-banner">
     <h2>Looking for quick answers?</h2>
     <p>Our business support help centre covers the most common questions about activating, managing, and growing with Roam.</p>
-    <a href="https://roam-for-business-support.tawk.help/" class="btn-red" style="display:inline-block;">Visit the help centre</a>
+    <a href="https://roam-for-business-support.tawk.help/" class="btn-red" style="display:inline-block;background:var(--blue);color:var(--blue-mid);font-weight:700;">Visit the help centre</a>
   </div>
 
   <div class="proof">
@@ -1203,8 +1213,12 @@ footer{background:#100008;padding:48px 40px 28px;}
       <div class="footer-brand-name" style="display:none;">roam</div>
       <p class="footer-brand-desc">Helping people become locals wherever they go, and helping local businesses grow through a digital high street built for real communities.</p>
       <div class="footer-store-row">
-        <a href="https://itunes.apple.com/us/app/roarapp/id1137901874" class="footer-store"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 2v7M4 6l3 3 3-3" stroke="rgba(255,255,255,0.6)" stroke-width="1.2" stroke-linecap="round"/><path d="M2 11h10" stroke="rgba(255,255,255,0.6)" stroke-width="1.2" stroke-linecap="round"/></svg><div class="footer-store-text"><strong>App Store</strong>iOS</div></a>
-        <a href="https://play.google.com/store/apps/details?id=com.roar.app" class="footer-store"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 2v7M4 6l3 3 3-3" stroke="rgba(255,255,255,0.6)" stroke-width="1.2" stroke-linecap="round"/><path d="M2 11h10" stroke="rgba(255,255,255,0.6)" stroke-width="1.2" stroke-linecap="round"/></svg><div class="footer-store-text"><strong>Google Play</strong>Android</div></a>
+        <a href="https://apps.apple.com/us/app/roarapp/id1137901874?ls=1" style="display:inline-block;line-height:0;">
+          <img src="https://raw.githubusercontent.com/RoamLocaApp/roam-local-app-website/main/Roam-Logos/apple-app-store-icon.png" alt="Download on the App Store" style="height:36px;width:auto;display:block;border-radius:6px;"/>
+        </a>
+        <a href="https://play.google.com/store/apps/details?id=com.roar.app" style="display:inline-block;line-height:0;">
+          <img src="https://raw.githubusercontent.com/RoamLocaApp/roam-local-app-website/main/Roam-Logos/android-app-store-icon.png" alt="Get it on Google Play" style="height:36px;width:auto;display:block;border-radius:6px;"/>
+        </a>
       </div>
     </div>
     <div>
