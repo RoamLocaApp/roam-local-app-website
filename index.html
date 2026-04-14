@@ -198,7 +198,7 @@ footer{background:#100008;padding:48px 40px 28px;}
 }
 .hero-pill{
   display:inline-block;
-  border:1px solid rgba(232,85,122,0.4);color:var(--red-light);
+  border:1px solid rgba(232,85,122,0.7);color:var(--red-light);background:rgba(0,0,0,0.25);backdrop-filter:blur(4px);
   font-size:11px;font-weight:500;padding:5px 16px;border-radius:20px;
   margin-bottom:22px;letter-spacing:0.8px;text-transform:uppercase;
   position:relative;
@@ -208,10 +208,11 @@ footer{background:#100008;padding:48px 40px 28px;}
   line-height:1.1;margin-bottom:16px;
   max-width:620px;margin-left:auto;margin-right:auto;
   position:relative;
+  text-shadow:0 2px 20px rgba(0,0,0,0.5);
 }
 .hero h1 em{color:var(--red-light);font-style:normal;}
 .hero-sub{
-  font-size:clamp(14px,1.8vw,17px);color:rgba(255,255,255,0.5);
+  font-size:clamp(14px,1.8vw,17px);color:rgba(255,255,255,0.85);text-shadow:0 1px 12px rgba(0,0,0,0.4);
   line-height:1.7;max-width:480px;margin:0 auto 36px;
   position:relative;
 }
@@ -356,16 +357,17 @@ footer{background:#100008;padding:48px 40px 28px;}
 ══════════════════════════════════════════════════ */
 .biz-hero{
   background:var(--plum);padding:80px 40px 72px;
-  text-align:center;position:relative;overflow:hidden;
+  text-align:center;position:relative;overflow:hidden;min-height:480px;
 }
 .biz-hero h1{
   font-size:clamp(30px,4.5vw,52px);font-weight:700;color:#fff;
   line-height:1.1;margin-bottom:16px;max-width:580px;
   margin-left:auto;margin-right:auto;position:relative;
+  text-shadow:0 2px 24px rgba(0,0,0,0.6);
 }
 .biz-hero h1 em{color:var(--red-light);font-style:normal;}
 .biz-hero-sub{
-  font-size:16px;color:rgba(255,255,255,0.5);
+  font-size:16px;color:rgba(255,255,255,0.88);text-shadow:0 1px 12px rgba(0,0,0,0.4);
   max-width:480px;margin:0 auto 36px;line-height:1.7;position:relative;
 }
 .biz-hero-btns{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;position:relative;}
@@ -458,9 +460,9 @@ footer{background:#100008;padding:48px 40px 28px;}
    ABOUT PAGE
 ══════════════════════════════════════════════════ */
 .about-hero{background:var(--plum);padding:80px 40px 72px;text-align:center;position:relative;overflow:hidden;}
-.about-hero h1{font-size:clamp(30px,4.5vw,50px);font-weight:700;color:#fff;line-height:1.1;margin-bottom:16px;max-width:560px;margin-left:auto;margin-right:auto;position:relative;}
+.about-hero h1{font-size:clamp(30px,4.5vw,50px);font-weight:700;color:#fff;line-height:1.1;margin-bottom:16px;max-width:560px;margin-left:auto;margin-right:auto;position:relative;text-shadow:0 2px 20px rgba(0,0,0,0.5);}
 .about-hero h1 em{color:var(--red-light);font-style:normal;}
-.about-hero-sub{font-size:16px;color:rgba(255,255,255,0.5);max-width:460px;margin:0 auto;line-height:1.7;position:relative;}
+.about-hero-sub{font-size:16px;color:rgba(255,255,255,0.88);text-shadow:0 1px 12px rgba(0,0,0,0.4);max-width:460px;margin:0 auto;line-height:1.7;position:relative;}
 .mission-section{background:#fff;padding:80px 40px;}
 .mission-inner{max-width:var(--max);margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:start;}
 .mission-quote{background:var(--plum);border-radius:var(--r-lg);padding:36px;}
@@ -723,6 +725,110 @@ footer{background:#100008;padding:48px 40px 28px;}
   .store-btn{min-height:44px;}
   .footer-link{min-height:36px;display:flex;align-items:center;}
 }
+
+/* ── YOUTUBE SECTION ── */
+.yt-section{background:var(--off);padding:80px 40px;}
+.yt-header{
+  display:flex;align-items:flex-end;justify-content:space-between;
+  gap:24px;margin-bottom:36px;flex-wrap:wrap;
+}
+.yt-channel-btn{
+  display:inline-flex;align-items:center;gap:8px;flex-shrink:0;
+  background:#fff;border:1px solid var(--border);
+  color:var(--plum);font-size:13px;font-weight:500;
+  padding:10px 18px;border-radius:var(--r);
+  transition:all 0.15s;white-space:nowrap;
+}
+.yt-channel-btn:hover{border-color:#FF0000;color:#FF0000;}
+.yt-player-wrap{
+  position:relative;width:100%;padding-bottom:46%;
+  border-radius:var(--r-lg);overflow:hidden;
+  background:var(--plum);margin-bottom:20px;
+  box-shadow:0 8px 32px rgba(0,0,0,0.12);
+}
+.yt-player-wrap iframe{
+  position:absolute;top:0;left:0;width:100%;height:100%;
+  border:none;
+}
+.yt-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;}
+.yt-thumb{
+  border-radius:var(--r);overflow:hidden;
+  background:var(--plum);border:1px solid var(--border);
+  text-decoration:none;display:block;
+  transition:transform 0.15s,box-shadow 0.15s;
+}
+.yt-thumb:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(0,0,0,0.12);}
+.yt-thumb-img{
+  position:relative;width:100%;padding-bottom:56%;
+  background:var(--blue-dark);overflow:hidden;
+}
+.yt-thumb-img img{position:absolute;top:0;left:0;width:100%;height:100%;}
+.yt-play-btn{
+  position:absolute;top:50%;left:50%;
+  transform:translate(-50%,-50%);
+  opacity:0.9;transition:opacity 0.15s;
+}
+.yt-thumb:hover .yt-play-btn{opacity:1;}
+.yt-thumb-label{
+  padding:10px 12px;font-size:12px;font-weight:500;
+  color:rgba(255,255,255,0.7);background:var(--plum);
+}
+.yt-cta-card{
+  border-radius:var(--r);border:1px solid var(--border);
+  background:#fff;text-decoration:none;display:block;
+  padding:22px 20px;transition:box-shadow 0.15s,transform 0.15s;
+}
+.yt-cta-card:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(0,0,0,0.08);}
+.yt-cta-card-dark{background:var(--blue-dark);border-color:rgba(58,189,214,0.2);}
+.yt-cta-card-inner{display:flex;gap:14px;align-items:flex-start;}
+.yt-cta-card-title{font-size:14px;font-weight:700;color:var(--plum);margin-bottom:6px;}
+.yt-cta-card-sub{font-size:12px;color:var(--muted);line-height:1.55;}
+@media(max-width:960px){
+  .yt-section{padding:48px 24px;}
+  .yt-grid{grid-template-columns:1fr 1fr;}
+  .yt-thumb{display:none;}
+}
+@media(max-width:600px){
+  .yt-section{padding:40px 16px;}
+  .yt-header{flex-direction:column;align-items:flex-start;}
+  .yt-grid{grid-template-columns:1fr;}
+  .yt-player-wrap{padding-bottom:56%;}
+}
+
+/* ── VIDEO HERO BACKGROUNDS ── */
+.hero-video-wrap{
+  position:absolute;top:0;left:0;width:100%;height:100%;
+  overflow:hidden;z-index:0;
+}
+.hero-video-wrap video{
+  position:absolute;top:50%;left:50%;
+  transform:translate(-50%,-50%);
+  min-width:100%;min-height:100%;
+  width:auto;height:auto;
+  object-fit:cover;
+}
+.hero-video-overlay{
+  position:absolute;top:0;left:0;width:100%;height:100%;
+  background:rgba(26,6,16,0.82);
+  z-index:1;
+}
+.hero-video-overlay.blue{
+  background:linear-gradient(135deg,rgba(10,58,69,0.88) 0%,rgba(26,6,16,0.88) 100%);
+}
+.hero > *:not(.hero-video-wrap):not(.hero-video-overlay){position:relative;z-index:2;}
+.about-hero > *:not(.hero-video-wrap):not(.hero-video-overlay){position:relative;z-index:2;}
+.about-hero{position:relative;overflow:hidden;}
+
+/* Video mute toggle */
+.video-mute-btn{
+  position:absolute;bottom:16px;right:16px;z-index:10;
+  width:32px;height:32px;border-radius:50%;
+  background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.2);
+  display:flex;align-items:center;justify-content:center;
+  cursor:pointer;transition:background 0.15s;
+  color:#fff;font-size:14px;
+}
+.video-mute-btn:hover{background:rgba(255,255,255,0.22);}
 </style>
 </head>
 <body>
@@ -770,9 +876,20 @@ footer{background:#100008;padding:48px 40px 28px;}
 
   <!-- HERO -->
   <section class="hero">
-    <div class="hero-ring" style="width:560px;height:560px;"></div>
-    <div class="hero-ring" style="width:840px;height:840px;opacity:0.55;"></div>
-    <div class="hero-ring" style="width:1100px;height:1100px;opacity:0.25;"></div>
+    <!-- Background video -->
+    <div class="hero-video-wrap">
+      <video autoplay muted loop playsinline preload="auto" id="hero-vid">
+        <source src="https://raw.githubusercontent.com/RoamLocaApp/roam-local-app-website/main/Web-Vids/UK_SPACE_VID.mp4" type="video/mp4"/>
+      </video>
+    </div>
+    <div class="hero-video-overlay"></div>
+    <button class="video-mute-btn" id="hero-mute-btn" onclick="toggleMute('hero-vid','hero-mute-btn')" title="Toggle sound">
+      <svg id="hero-mute-icon" width="14" height="14" viewBox="0 0 14 14" fill="none">
+        <path d="M2 5H5L8 2v10L5 9H2V5z" fill="#fff"/>
+        <path d="M10 4.5c1 .8 1.5 1.8 1.5 2.5S11 9.2 10 10" stroke="#fff" stroke-width="1.2" stroke-linecap="round"/>
+      </svg>
+    </button>
+    <!-- Decorative rings removed — video provides depth -->
     <div class="hero-pill">Discover · Connect · Belong</div>
     <h1>The local platform for <em>people</em> and <em>places</em></h1>
     <p class="hero-sub">Roam connects everyday explorers with great local businesses — and gives business owners the tools to be found, grow, and thrive in their community.</p>
@@ -889,6 +1006,87 @@ footer{background:#100008;padding:48px 40px 28px;}
   </section>
 
   <!-- STATS -->
+
+  <!-- ════════════════════════════════════════════════
+       YOUTUBE — Watch Roam in action
+  ════════════════════════════════════════════════ -->
+  <section class="yt-section">
+    <div class="container">
+      <div class="yt-header">
+        <div>
+          <div class="tag">See it in action</div>
+          <div class="h2">Watch Roam come to life</div>
+          <p class="lead">From local discoveries to business activations — see how Roam is changing the way communities connect.</p>
+        </div>
+        <a href="https://www.youtube.com/channel/UCqj3dSpojfZagmDFJrygtUw" target="_blank" rel="noopener" class="yt-channel-btn">
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+            <path d="M17.1 5.4s-.2-1.4-.8-2c-.7-.8-1.6-.8-2-.8C12 2.5 9 2.5 9 2.5s-3 0-5.3.1c-.4.1-1.3.1-2 .8-.6.6-.8 2-.8 2S.7 7 .7 8.5v1.4C.7 11.4.9 13 .9 13s.2 1.4.8 2c.7.8 1.7.8 2.1.8C5.1 16 9 16 9 16s3 0 5.3-.2c.4 0 1.3-.1 2-.8.6-.6.8-2 .8-2s.2-1.6.2-3.1V8.5C17.3 7 17.1 5.4 17.1 5.4z" fill="#FF0000"/>
+            <path d="M7.2 11.5V6.5l5 2.5-5 2.5z" fill="#fff"/>
+          </svg>
+          Visit our YouTube channel
+        </a>
+      </div>
+
+      <!-- Featured video player -->
+      <div class="yt-player-wrap">
+        <iframe
+          id="yt-featured"
+          src="https://www.youtube.com/embed/videoseries?list=UUqj3dSpojfZagmDFJrygtUw&rel=0&modestbranding=1&color=white"
+          title="Roam — latest videos"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen>
+        </iframe>
+      </div>
+
+      <!-- Thumbnail grid — latest 3 videos via playlist embeds -->
+      <div class="yt-grid">
+        <a href="https://www.youtube.com/playlist?list=UUqj3dSpojfZagmDFJrygtUw" target="_blank" rel="noopener" class="yt-thumb">
+          <div class="yt-thumb-img">
+            <img src="https://img.youtube.com/vi/0/mqdefault.jpg"
+                 onerror="this.parentElement.style.background='var(--blue-dark)';this.style.display='none';"
+                 alt="Roam video" style="width:100%;height:100%;object-fit:cover;display:block;"/>
+            <div class="yt-play-btn">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <circle cx="10" cy="10" r="10" fill="rgba(0,0,0,0.65)"/>
+                <path d="M8 7l6 3-6 3V7z" fill="#fff"/>
+              </svg>
+            </div>
+          </div>
+          <div class="yt-thumb-label">Latest videos</div>
+        </a>
+
+        <!-- Direct channel link cards -->
+        <a href="https://www.youtube.com/channel/UCqj3dSpojfZagmDFJrygtUw" target="_blank" rel="noopener" class="yt-cta-card">
+          <div class="yt-cta-card-inner">
+            <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
+              <circle cx="18" cy="18" r="18" fill="#FF0000"/>
+              <path d="M15 12l10 6-10 6V12z" fill="#fff"/>
+            </svg>
+            <div class="yt-cta-card-text">
+              <div class="yt-cta-card-title">Subscribe to our channel</div>
+              <div class="yt-cta-card-sub">Get notified when we post new videos about Roam, local business tips, and community stories.</div>
+            </div>
+          </div>
+        </a>
+
+        <a href="https://www.youtube.com/channel/UCqj3dSpojfZagmDFJrygtUw" target="_blank" rel="noopener" class="yt-cta-card yt-cta-card-dark">
+          <div class="yt-cta-card-inner">
+            <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
+              <circle cx="18" cy="18" r="18" fill="rgba(58,189,214,0.15)"/>
+              <rect x="10" y="12" width="16" height="12" rx="2" stroke="#3abdd6" stroke-width="1.5"/>
+              <path d="M15 16l6 2-6 2v-4z" fill="#3abdd6"/>
+            </svg>
+            <div class="yt-cta-card-text" style="color:rgba(255,255,255,0.9);">
+              <div class="yt-cta-card-title" style="color:#fff;">See the app in action</div>
+              <div class="yt-cta-card-sub" style="color:rgba(255,255,255,0.55);">Watch how businesses and explorers use Roam every day in their local communities.</div>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
   <div class="stats">
     <div class="stat-item"><div class="stat-n">Free</div><div class="stat-l">to download &amp; explore</div></div>
     <div class="stat-sep"></div>
@@ -954,8 +1152,18 @@ footer{background:#100008;padding:48px 40px 28px;}
 <div id="page-business" class="page">
 
   <section class="biz-hero">
-    <div class="hero-ring" style="width:500px;height:500px;"></div>
-    <div class="hero-ring" style="width:800px;height:800px;opacity:0.5;"></div>
+    <div class="hero-video-wrap">
+      <video autoplay muted loop playsinline preload="auto" id="biz-vid">
+        <source src="https://raw.githubusercontent.com/RoamLocaApp/roam-local-app-website/main/Web-Vids/Newcastle-City_Scape.mp4" type="video/mp4"/>
+      </video>
+    </div>
+    <div class="hero-video-overlay blue"></div>
+    <button class="video-mute-btn" id="biz-mute-btn" onclick="toggleMute('biz-vid','biz-mute-btn')" title="Toggle sound">
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+        <path d="M2 5H5L8 2v10L5 9H2V5z" fill="#fff"/>
+        <path d="M10 4.5c1 .8 1.5 1.8 1.5 2.5S11 9.2 10 10" stroke="#fff" stroke-width="1.2" stroke-linecap="round"/>
+      </svg>
+    </button>
     <div class="hero-pill" style="position:relative;border-color:rgba(58,189,214,0.4);color:#3abdd6;">For business owners</div>
     <h1>Empowering <em>local</em> success</h1>
     <p class="biz-hero-sub">Roam for Business is your all-in-one digital marketing solution — designed to help local businesses thrive by connecting you directly with engaged customers in your area.</p>
@@ -1079,8 +1287,18 @@ footer{background:#100008;padding:48px 40px 28px;}
 <div id="page-about" class="page">
 
   <section class="about-hero">
-    <div class="hero-ring" style="width:500px;height:500px;"></div>
-    <div class="hero-ring" style="width:800px;height:800px;opacity:0.5;"></div>
+    <div class="hero-video-wrap">
+      <video autoplay muted loop playsinline preload="auto" id="about-vid">
+        <source src="https://raw.githubusercontent.com/RoamLocaApp/roam-local-app-website/main/Web-Vids/Newcastle-City_Scape.mp4" type="video/mp4"/>
+      </video>
+    </div>
+    <div class="hero-video-overlay"></div>
+    <button class="video-mute-btn" id="about-mute-btn" onclick="toggleMute('about-vid','about-mute-btn')" title="Toggle sound">
+      <svg id="about-mute-icon" width="14" height="14" viewBox="0 0 14 14" fill="none">
+        <path d="M2 5H5L8 2v10L5 9H2V5z" fill="#fff"/>
+        <path d="M10 4.5c1 .8 1.5 1.8 1.5 2.5S11 9.2 10 10" stroke="#fff" stroke-width="1.2" stroke-linecap="round"/>
+      </svg>
+    </button>
     <div class="hero-pill" style="position:relative;">Our story</div>
     <h1>Built for <em>local</em> communities</h1>
     <p class="about-hero-sub">Roam exists to bridge the gap between people and the places around them — making local areas more connected, more discoverable, and more rewarding for everyone.</p>
@@ -1253,6 +1471,9 @@ footer{background:#100008;padding:48px 40px 28px;}
       <a href="https://www.instagram.com/roamlocal_app" class="social-btn"><svg viewBox="0 0 13 13" fill="none"><rect x="1" y="1" width="11" height="11" rx="3" stroke="rgba(255,255,255,0.5)" stroke-width="1.1"/><circle cx="6.5" cy="6.5" r="2.5" stroke="rgba(255,255,255,0.5)" stroke-width="1.1"/><circle cx="9.5" cy="3.5" r="0.7" fill="rgba(255,255,255,0.5)"/></svg></a>
       <a href="https://www.facebook.com/RoamLocalApp" class="social-btn"><svg viewBox="0 0 13 13" fill="none"><path d="M8 1.5H6.5a2 2 0 0 0-2 2V5H3v2h1.5v4.5H7V7h1.5L9 5H7V3.5a.5.5 0 0 1 .5-.5H8V1.5Z" stroke="rgba(255,255,255,0.5)" stroke-width="1" stroke-linejoin="round"/></svg></a>
       <a href="https://twitter.com/RoamLocalApp" class="social-btn"><svg viewBox="0 0 13 13" fill="none"><path d="M1.5 2L5.5 7 1.5 11.5h1.3l3.2-3.7 2.5 3.7H11L6.8 6.8 10.5 2H9.3L6.3 5.5 4 2H1.5Z" fill="rgba(255,255,255,0.5)"/></svg></a>
+      <a href="https://www.youtube.com/channel/UCqj3dSpojfZagmDFJrygtUw" target="_blank" rel="noopener" class="social-btn" title="YouTube">
+        <svg viewBox="0 0 13 13" fill="none"><path d="M12.2 3.8s-.1-.9-.5-1.3c-.5-.5-1-.5-1.3-.5C8.6 1.8 6.5 1.8 6.5 1.8s-2.1 0-3.9.2c-.3 0-.9.1-1.3.5-.4.4-.5 1.3-.5 1.3S.6 5 .6 6v1c0 1 .2 2.2.2 2.2s.1.9.5 1.3c.5.5 1.1.5 1.4.5C3.8 11.2 6.5 11.2 6.5 11.2s2.1 0 3.9-.1c.3 0 .9-.1 1.3-.5.4-.4.5-1.3.5-1.3s.2-1.1.2-2.2V6c0-1-.2-2.2-.2-2.2z" fill="rgba(255,255,255,0.5)"/><path d="M5.4 8.2V4.8l3.5 1.7-3.5 1.7z" fill="rgba(255,255,255,0.9)"/></svg>
+      </a>
     </div>
   </div>
 </footer>
@@ -1261,6 +1482,14 @@ footer{background:#100008;padding:48px 40px 28px;}
      JAVASCRIPT — PAGE ROUTING
 ════════════════════════════════════════════════ -->
 <script>
+function toggleMute(vidId, btnId) {
+  const vid = document.getElementById(vidId);
+  const btn = document.getElementById(btnId);
+  vid.muted = !vid.muted;
+  btn.innerHTML = vid.muted
+    ? '<svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 5H5L8 2v10L5 9H2V5z" fill="#fff"/><path d="M10 4.5c1 .8 1.5 1.8 1.5 2.5S11 9.2 10 10" stroke="#fff" stroke-width="1.2" stroke-linecap="round"/></svg>'
+    : '<svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 5H5L8 2v10L5 9H2V5z" fill="#fff"/><line x1="10" y1="4" x2="13" y2="7" stroke="#fff" stroke-width="1.2" stroke-linecap="round"/><line x1="13" y1="4" x2="10" y2="7" stroke="#fff" stroke-width="1.2" stroke-linecap="round"/></svg>';
+}
 function showPage(id) {
   document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
   document.getElementById('page-' + id).classList.add('active');
