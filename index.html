@@ -535,31 +535,81 @@ footer{background:#100008;padding:48px 40px 28px;}
 .contact-card-title{font-size:14px;font-weight:700;color:var(--plum);margin-bottom:3px;}
 .contact-card-desc{font-size:12px;color:var(--muted);line-height:1.5;}
 .contact-card-link{display:inline-block;margin-top:8px;font-size:12px;color:var(--red);font-weight:500;cursor:pointer;}
-.form-wrap{background:var(--off);border:1px solid var(--border);border-radius:var(--r-lg);padding:32px;}
+./* ── CONTACT FORM ── */
+.form-wrap{background:#fff;border:1px solid var(--border);border-radius:var(--r-lg);padding:32px;position:relative;}
 .form-title{font-size:18px;font-weight:700;color:var(--plum);margin-bottom:4px;}
-.form-sub{font-size:13px;color:var(--muted);margin-bottom:24px;}
+.form-sub{font-size:13px;color:var(--muted);margin-bottom:24px;line-height:1.5;}
 .form-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
-.form-group{display:flex;flex-direction:column;gap:5px;margin-bottom:12px;}
-.form-label{font-size:11px;font-weight:500;color:var(--plum);text-transform:uppercase;letter-spacing:0.5px;}
+.form-group{display:flex;flex-direction:column;gap:5px;margin-bottom:14px;}
+.form-label{font-size:11px;font-weight:600;color:var(--plum);text-transform:uppercase;letter-spacing:0.5px;display:flex;align-items:center;gap:4px;}
+.form-label .req{color:var(--red);font-size:13px;line-height:1;}
 .form-input,.form-select,.form-textarea{
-  width:100%;padding:10px 12px;
-  border:1px solid var(--border);border-radius:var(--r);
-  font-family:'DM Sans',sans-serif;font-size:13px;color:var(--plum);
-  background:#fff;outline:none;transition:border-color 0.15s,box-shadow 0.15s;
+  width:100%;padding:11px 14px;
+  border:1.5px solid var(--border);border-radius:var(--r);
+  font-family:'DM Sans',sans-serif;font-size:14px;color:var(--plum);
+  background:#fff;outline:none;transition:border-color 0.2s,box-shadow 0.2s;
 }
+.form-input:hover,.form-select:hover{border-color:#c8bfc2;}
 .form-input:focus,.form-select:focus,.form-textarea:focus{
   border-color:var(--blue);box-shadow:0 0 0 3px rgba(58,189,214,0.1);
 }
-.form-textarea{min-height:110px;resize:vertical;}
-.form-select{appearance:none;cursor:pointer;}
+.form-input.valid{border-color:#22c55e;}
+.form-input.invalid{border-color:var(--red);}
+.form-field-hint{font-size:11px;color:var(--muted);margin-top:3px;}
+.form-field-error{font-size:11px;color:var(--red);margin-top:3px;display:none;}
+.form-field-error.show{display:block;}
+.form-textarea{min-height:120px;resize:vertical;line-height:1.6;}
+.form-select{appearance:none;cursor:pointer;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8' fill='none'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23777' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;padding-right:36px;}
+/* Honeypot — visually hidden from humans, visible to bots */
+.form-honey{position:absolute;left:-9999px;top:-9999px;opacity:0;height:0;overflow:hidden;pointer-events:none;tab-index:-1;}
+/* Character counter */
+.form-counter{font-size:11px;color:var(--muted);text-align:right;margin-top:3px;}
+.form-counter.warn{color:#f59e0b;}
+.form-counter.over{color:var(--red);}
+/* Submit button */
 .form-submit{
-  width:100%;background:var(--blue);color:var(--blue-mid);font-weight:700;
-  font-family:'DM Sans',sans-serif;font-size:14px;font-weight:700;
-  padding:12px;border:none;border-radius:var(--r);
-  cursor:pointer;transition:background 0.15s;margin-top:4px;
+  width:100%;background:var(--blue);color:#0a3a45;font-weight:700;
+  font-family:'DM Sans',sans-serif;font-size:15px;
+  padding:13px;border:none;border-radius:var(--r);
+  cursor:pointer;transition:background 0.15s,transform 0.1s;margin-top:8px;
+  display:flex;align-items:center;justify-content:center;gap:8px;
 }
-.form-submit:hover{background:var(--blue-deep);color:#fff;}
-.form-note{font-size:11px;color:#bbb;text-align:center;margin-top:10px;}
+.form-submit:hover{background:#2aadc4;}
+.form-submit:active{transform:scale(0.98);}
+.form-submit:disabled{opacity:0.6;cursor:not-allowed;transform:none;}
+.form-submit svg{flex-shrink:0;}
+/* Success state */
+.form-success{
+  display:none;text-align:center;padding:32px 20px;
+}
+.form-success.show{display:block;}
+.form-success-icon{
+  width:56px;height:56px;border-radius:50%;
+  background:#dcfce7;display:flex;align-items:center;justify-content:center;
+  margin:0 auto 16px;
+}
+.form-success-title{font-size:18px;font-weight:700;color:var(--plum);margin-bottom:8px;}
+.form-success-sub{font-size:14px;color:var(--muted);line-height:1.6;}
+.form-note{font-size:11px;color:#bbb;text-align:center;margin-top:12px;line-height:1.5;}
+/* Progress indicator */
+.form-progress{display:flex;gap:4px;margin-bottom:20px;}
+.form-step-dot{height:3px;flex:1;border-radius:3px;background:var(--border);transition:background 0.3s;}
+.form-step-dot.done{background:var(--blue);}
+.form-step-dot.active{background:var(--red);}
+/* Contact cards improved */
+.contact-options{display:flex;flex-direction:column;gap:12px;}
+.contact-card{background:#fff;border:1.5px solid var(--border);border-radius:var(--r-lg);padding:20px;display:flex;align-items:flex-start;gap:14px;transition:border-color 0.15s,box-shadow 0.15s;}
+.contact-card:hover{border-color:rgba(201,27,82,0.3);box-shadow:0 2px 12px rgba(201,27,82,0.06);}
+.contact-card-ic{width:42px;height:42px;border-radius:10px;background:var(--red-pale);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.contact-card-ic svg{width:20px;height:20px;}
+.contact-card-label{font-size:10px;color:var(--red-deep);text-transform:uppercase;letter-spacing:0.8px;font-weight:600;margin-bottom:3px;}
+.contact-card-title{font-size:14px;font-weight:700;color:var(--plum);margin-bottom:3px;}
+.contact-card-desc{font-size:12px;color:var(--muted);line-height:1.5;}
+.contact-card-link{display:inline-block;margin-top:8px;font-size:12px;color:var(--red);font-weight:500;cursor:pointer;}
+/* Response time badge */
+.response-badge{display:inline-flex;align-items:center;gap:6px;background:var(--blue-pale);border:1px solid rgba(58,189,214,0.25);border-radius:20px;padding:5px 12px;font-size:12px;color:var(--blue-mid);font-weight:500;margin-top:16px;}
+.response-badge .dot{width:6px;height:6px;border-radius:50%;background:#22c55e;flex-shrink:0;animation:pulse 2s infinite;}
+@keyframes pulse{0%,100%{opacity:1;}50%{opacity:0.4;}}
 .faq-banner{background:var(--off);padding:48px 40px;border-top:1px solid var(--border);text-align:center;}
 .faq-banner h2{font-size:22px;font-weight:700;color:var(--plum);margin-bottom:8px;}
 .faq-banner p{font-size:14px;color:var(--muted);margin-bottom:20px;}
@@ -899,6 +949,68 @@ footer{background:#100008;padding:48px 40px 28px;}
   .hero-video-overlay { background: var(--plum) !important; }
   .hero-video-overlay.blue { background: var(--blue-dark) !important; }
 }
+
+/* ══ DOWNLOAD MODAL ══════════════════════════════ */
+.dl-modal-overlay{
+  display:none;position:fixed;inset:0;z-index:500;
+  background:rgba(10,4,8,0.75);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);
+  align-items:center;justify-content:center;padding:20px;
+}
+.dl-modal-overlay.open{display:flex;}
+.dl-modal{
+  background:#fff;border-radius:20px;
+  width:100%;max-width:400px;
+  padding:36px 32px 28px;position:relative;
+  animation:modalIn 0.25s cubic-bezier(0.34,1.56,0.64,1);
+}
+@keyframes modalIn{from{opacity:0;transform:scale(0.92) translateY(12px);}to{opacity:1;transform:scale(1) translateY(0);}}
+.dl-modal-close{
+  position:absolute;top:14px;right:14px;
+  width:32px;height:32px;border-radius:50%;
+  background:var(--off);border:none;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  transition:background 0.15s;color:var(--muted);
+}
+.dl-modal-close:hover{background:var(--border);}
+.dl-modal-icon{
+  width:56px;height:56px;border-radius:16px;
+  background:var(--plum);display:flex;align-items:center;justify-content:center;
+  margin:0 auto 16px;
+}
+.dl-modal-icon svg{width:28px;height:28px;}
+.dl-modal-title{font-size:20px;font-weight:700;color:var(--plum);text-align:center;margin-bottom:6px;}
+.dl-modal-sub{font-size:14px;color:var(--muted);text-align:center;line-height:1.6;margin-bottom:24px;}
+.dl-modal-options{display:flex;flex-direction:column;gap:10px;}
+.dl-option{
+  display:flex;align-items:center;gap:16px;
+  padding:14px 18px;border-radius:var(--r-lg);border:1.5px solid var(--border);
+  cursor:pointer;transition:all 0.15s;text-decoration:none;
+  background:#fff;
+}
+.dl-option:hover{border-color:var(--red);background:var(--red-pale);transform:translateY(-1px);box-shadow:0 4px 16px rgba(201,27,82,0.1);}
+.dl-option.android:hover{border-color:var(--blue);background:var(--blue-pale);box-shadow:0 4px 16px rgba(58,189,214,0.1);}
+.dl-option img{height:44px;width:auto;border-radius:8px;flex-shrink:0;}
+.dl-option-text{flex:1;}
+.dl-option-label{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:0.8px;color:var(--muted);margin-bottom:2px;}
+.dl-option-name{font-size:15px;font-weight:700;color:var(--plum);}
+.dl-option-sub{font-size:11px;color:var(--muted);margin-top:1px;}
+.dl-option-arrow{color:var(--muted);flex-shrink:0;transition:transform 0.15s;}
+.dl-option:hover .dl-option-arrow{transform:translateX(3px);color:var(--red);}
+.dl-option.android:hover .dl-option-arrow{color:var(--blue);}
+.dl-modal-divider{display:flex;align-items:center;gap:10px;margin:6px 0;color:var(--muted);font-size:11px;}
+.dl-modal-divider::before,.dl-modal-divider::after{content:'';flex:1;height:1px;background:var(--border);}
+.dl-modal-note{font-size:11px;color:#bbb;text-align:center;margin-top:16px;line-height:1.5;}
+.dl-modal-free{
+  display:inline-flex;align-items:center;gap:5px;
+  background:var(--red-pale);color:var(--red-deep);
+  font-size:11px;font-weight:600;padding:4px 10px;border-radius:20px;
+  margin:0 auto 20px;display:flex;justify-content:center;width:fit-content;
+}
+/* Context variant — business modal has blue accents */
+.dl-modal.biz-mode .dl-modal-icon{background:var(--blue-dark);}
+.dl-modal.biz-mode .dl-option:hover{border-color:var(--blue);background:var(--blue-pale);}
+.dl-modal.biz-mode .dl-option:hover .dl-option-arrow{color:var(--blue);}
+.dl-modal.biz-mode .dl-modal-free{background:var(--blue-pale);color:var(--blue-mid);}
 </style>
 
 <script type="application/ld+json">
@@ -989,7 +1101,7 @@ footer{background:#100008;padding:48px 40px 28px;}
     </div>
     <div class="nav-btns">
       <span class="btn-nav-ghost" onclick="showPage('business')" style="border-color:rgba(58,189,214,0.5);color:#3abdd6;">List your business</span>
-      <span class="btn-nav-solid" onclick="showPage('home');setTimeout(()=>document.getElementById('sec-download').scrollIntoView({behavior:'smooth'}),80)">Download app</span>
+      <span class="btn-nav-solid" onclick="openDlModal('consumer')">Download app</span>
     </div>
     <button class="nav-hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-nav" onclick="toggleMenu()">
       <span></span><span></span><span></span>
@@ -1024,7 +1136,7 @@ footer{background:#100008;padding:48px 40px 28px;}
   <div class="mobile-nav-divider"></div>
   <div class="mobile-nav-btns">
     <button class="btn-blue-solid" onclick="showPage('business');closeMenu()">List your business</button>
-    <button class="btn-red-solid" onclick="showPage('home');closeMenu();setTimeout(()=>document.getElementById('sec-download').scrollIntoView({behavior:'smooth'}),80)">Download app</button>
+    <button class="btn-red-solid" onclick="openDlModal('consumer');closeMenu()">Download app</button>
   </div>
 </div>
 
@@ -1054,7 +1166,7 @@ footer{background:#100008;padding:48px 40px 28px;}
     <h1>The local platform for <em>people</em> and <em>places</em></h1>
     <p class="hero-sub">Roam connects everyday explorers with great local businesses — and gives business owners the tools to be found, grow, and thrive in their community.</p>
     <div class="hero-btns">
-      <button class="btn-red" onclick="document.getElementById('sec-download').scrollIntoView({behavior:'smooth'})">Download the app</button>
+      <button class="btn-red" onclick="openDlModal('consumer')">Download the app</button>
       <button class="btn-outline" onclick="showPage('business')" style="border-color:rgba(58,189,214,0.55);color:#3abdd6;">Add your business</button>
     </div>
     <!-- PHONE FAN
@@ -1102,7 +1214,7 @@ footer{background:#100008;padding:48px 40px 28px;}
             <div class="check-item light"><div class="check-dot on-light"><svg viewBox="0 0 9 9" fill="none"><path d="M1.5 4.5l2 2 4-4" stroke="#c91b52" stroke-width="1.4" stroke-linecap="round"/></svg></div>QR menus, in-app ordering &amp; payment</div>
             <div class="check-item light"><div class="check-dot on-light"><svg viewBox="0 0 9 9" fill="none"><path d="M1.5 4.5l2 2 4-4" stroke="#c91b52" stroke-width="1.4" stroke-linecap="round"/></svg></div>Travel guides &amp; meet with friends</div>
           </div>
-          <button class="btn-red" onclick="document.getElementById('sec-download').scrollIntoView({behavior:'smooth'})">Download Roam — it&apos;s free</button>
+          <button class="btn-red" onclick="openDlModal('consumer')">Download Roam — it&apos;s free</button>
         </div>
         <div class="for-card business">
           <div class="for-card-icon">
@@ -1287,7 +1399,7 @@ footer{background:#100008;padding:48px 40px 28px;}
       <div class="cta-h">Join your local community today</div>
       <p class="cta-sub">Download the app to explore. Or activate your business and start reaching local customers.</p>
       <div class="cta-btns">
-        <button class="btn-red" style="font-size:15px;padding:13px 28px;" onclick="document.getElementById('sec-download').scrollIntoView({behavior:'smooth'})">Download the app</button>
+        <button class="btn-red" style="font-size:15px;padding:13px 28px;" onclick="openDlModal('consumer')">Download the app</button>
         <button class="btn-outline" style="font-size:15px;padding:13px 28px;" onclick="showPage('business')">Activate your business</button>
       </div>
     </div>
@@ -1320,7 +1432,7 @@ footer{background:#100008;padding:48px 40px 28px;}
     <h1>Empowering <em>local</em> success</h1>
     <p class="biz-hero-sub">Roam for Business is your all-in-one digital marketing solution — designed to help local businesses thrive by connecting you directly with engaged customers in your area.</p>
     <div class="biz-hero-btns">
-      <button class="btn-red" onclick="document.getElementById('biz-activate').scrollIntoView({behavior:'smooth'})" style="background:#3abdd6;color:#0a3a45;font-weight:700;box-shadow:0 4px 20px rgba(0,0,0,0.4);">Activate your business</button>
+      <button class="btn-red" onclick="openDlModal('business')" style="background:#3abdd6;color:#0a3a45;font-weight:700;box-shadow:0 4px 20px rgba(0,0,0,0.4);">Activate your business</button>
       <button class="btn-outline" onclick="document.getElementById('biz-toolkit').scrollIntoView({behavior:'smooth'})" style="border-color:rgba(255,255,255,0.6);color:#fff;background:rgba(255,255,255,0.1);backdrop-filter:blur(4px);">See what's included</button>
     </div>
     <div class="biz-trust">
@@ -1366,7 +1478,7 @@ footer{background:#100008;padding:48px 40px 28px;}
         <div class="tag">Business Service Hub</div>
         <h2 class="h2">Business in a box</h2>
         <p class="lead" style="margin-top:8px;margin-bottom:24px;">Gold Members get access to a broader toolkit that supports the day-to-day running of their business — all in one place.</p>
-        <button class="btn-red" onclick="document.getElementById('biz-activate').scrollIntoView({behavior:'smooth'})" style="background:var(--blue);color:var(--blue-mid);font-weight:700;">Get started free</button>
+        <button class="btn-red" onclick="openDlModal('business')" style="background:var(--blue);color:var(--blue-mid);font-weight:700;" onclick="openDlModal('business')">Get started free</button>
       </div>
       <div class="hub-tools">
         <div class="hub-tool"><div class="hub-tool-ic"><svg viewBox="0 0 16 16" fill="none"><rect x="2" y="2" width="12" height="12" rx="2" stroke="#c91b52" stroke-width="1.2"/><path d="M5 8h6M5 5h4M5 11h5" stroke="#c91b52" stroke-width="1" stroke-linecap="round"/></svg></div><div><div class="hub-tool-name">Accounting tools</div><div class="hub-tool-desc">Streamline your books</div></div></div>
@@ -1414,7 +1526,7 @@ footer{background:#100008;padding:48px 40px 28px;}
       <div class="cta-h">Growing with businesses like yours</div>
       <p class="cta-sub">Whether you're running a café, boutique, bar, or cultural venue — Roam gives you the tools to connect with your community. Let's grow together.</p>
       <div class="cta-btns">
-        <button class="btn-red" style="font-size:15px;padding:13px 28px;background:var(--blue);color:var(--blue-mid);font-weight:700;" onclick="document.getElementById('biz-activate').scrollIntoView({behavior:'smooth'})">Activate your business free</button>
+        <button class="btn-red" style="font-size:15px;padding:13px 28px;background:var(--blue);color:var(--blue-mid);font-weight:700;" onclick="openDlModal('business')">Activate your business free</button>
         <button class="btn-outline" style="font-size:15px;padding:13px 28px;" onclick="showPage('contact')">Talk to the team</button>
       </div>
     </div>
@@ -1506,7 +1618,7 @@ footer{background:#100008;padding:48px 40px 28px;}
       <div class="tag light" style="text-align:center;">Ready to be part of it?</div>
       <div class="cta-h">Whether you explore or do business — there&apos;s a place for you on Roam</div>
       <div class="cta-btns" style="margin-top:28px;">
-        <button class="btn-red" style="font-size:15px;padding:13px 28px;" onclick="showPage('home');setTimeout(()=>document.getElementById('sec-download').scrollIntoView({behavior:'smooth'}),80)">Download the app</button>
+        <button class="btn-red" style="font-size:15px;padding:13px 28px;" onclick="openDlModal('consumer')">Download the app</button>
         <button class="btn-outline" style="font-size:15px;padding:13px 28px;" onclick="showPage('business')">Activate your business</button>
       </div>
     </div>
@@ -1539,19 +1651,108 @@ footer{background:#100008;padding:48px 40px 28px;}
           <div class="contact-card"><div class="contact-card-ic"><svg viewBox="0 0 20 20" fill="none"><rect x="2" y="2" width="16" height="16" rx="4" stroke="#c91b52" stroke-width="1.4"/><circle cx="10" cy="10" r="3" stroke="#c91b52" stroke-width="1.2"/><circle cx="14.5" cy="5.5" r="1" fill="#c91b52"/></svg></div><div><div class="contact-card-label">Social media</div><div class="contact-card-title">Follow &amp; message us</div><p class="contact-card-desc">We're active on Instagram, Facebook, and X.</p><div style="display:flex;gap:10px;margin-top:8px;"><a href="https://www.instagram.com/roamlocal_app" class="contact-card-link" style="margin-top:0;">Instagram</a><a href="https://www.facebook.com/RoamLocalApp" class="contact-card-link" style="margin-top:0;">Facebook</a><a href="https://twitter.com/RoamLocalApp" class="contact-card-link" style="margin-top:0;">X</a></div></div></div>
         </div>
       </div>
-      <div class="form-wrap">
-        <div class="form-title">Send a message</div>
-        <div class="form-sub">Fill in the form and we'll be in touch shortly.</div>
-        <div class="form-row">
-          <div class="form-group" style="margin-bottom:0;"><label class="form-label">First name</label><input type="text" class="form-input" placeholder="Jane"/></div>
-          <div class="form-group" style="margin-bottom:0;"><label class="form-label">Last name</label><input type="text" class="form-input" placeholder="Smith"/></div>
+      <div class="form-wrap" id="contact-form-wrap">
+
+        <!-- Progress indicator -->
+        <div class="form-progress" aria-hidden="true">
+          <div class="form-step-dot active" id="fdot-0"></div>
+          <div class="form-step-dot" id="fdot-1"></div>
+          <div class="form-step-dot" id="fdot-2"></div>
         </div>
-        <div class="form-group"><label class="form-label">Email</label><input type="email" class="form-input" placeholder="jane@example.com"/></div>
-        <div class="form-group"><label class="form-label">I am a...</label><select class="form-select"><option value="">Select an option</option><option>Business owner</option><option>App user / explorer</option><option>Press / media</option><option>Partner or investor</option><option>Other</option></select></div>
-        <div class="form-group"><label class="form-label">Subject</label><input type="text" class="form-input" placeholder="How can we help?"/></div>
-        <div class="form-group"><label class="form-label">Message</label><textarea class="form-textarea" placeholder="Tell us a bit more..."></textarea></div>
-        <button class="form-submit">Send message</button>
-        <p class="form-note">We aim to respond within 1–2 business days.</p>
+
+        <div class="form-title">Send us a message</div>
+        <div class="form-sub">We read every message and aim to reply within 1–2 business days.</div>
+
+        <form id="contact-form" novalidate autocomplete="on">
+
+          <!-- HONEYPOT — hidden from humans, traps bots -->
+          <div class="form-honey" aria-hidden="true">
+            <label for="website">Website</label>
+            <input type="text" id="website" name="website" tabindex="-1" autocomplete="off"/>
+          </div>
+
+          <!-- Hidden timing field — bots fill forms instantly -->
+          <input type="hidden" id="form-load-time" name="form_load_time"/>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="cf-fname">First name <span class="req" aria-label="required">*</span></label>
+              <input type="text" id="cf-fname" name="first_name" class="form-input" placeholder="Jane" autocomplete="given-name" required minlength="2" maxlength="50"/>
+              <span class="form-field-error" id="err-fname">Please enter your first name</span>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="cf-lname">Last name <span class="req" aria-label="required">*</span></label>
+              <input type="text" id="cf-lname" name="last_name" class="form-input" placeholder="Smith" autocomplete="family-name" required minlength="2" maxlength="50"/>
+              <span class="form-field-error" id="err-lname">Please enter your last name</span>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="cf-email">Email address <span class="req" aria-label="required">*</span></label>
+            <input type="email" id="cf-email" name="email" class="form-input" placeholder="jane@example.com" autocomplete="email" required maxlength="100"/>
+            <span class="form-field-error" id="err-email">Please enter a valid email address</span>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="cf-type">I am a... <span class="req" aria-label="required">*</span></label>
+            <select id="cf-type" name="contact_type" class="form-select" required>
+              <option value="">Select an option</option>
+              <option value="business">Business owner</option>
+              <option value="explorer">App user / explorer</option>
+              <option value="press">Press / media</option>
+              <option value="partner">Partner or investor</option>
+              <option value="other">Other</option>
+            </select>
+            <span class="form-field-error" id="err-type">Please select who you are</span>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="cf-subject">Subject <span class="req" aria-label="required">*</span></label>
+            <input type="text" id="cf-subject" name="subject" class="form-input" placeholder="How can we help?" required minlength="5" maxlength="120"/>
+            <span class="form-field-error" id="err-subject">Please enter a subject (at least 5 characters)</span>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="cf-message">Message <span class="req" aria-label="required">*</span></label>
+            <textarea id="cf-message" name="message" class="form-textarea" placeholder="Tell us a bit more about what you need..." required minlength="20" maxlength="1000"></textarea>
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-top:3px;">
+              <span class="form-field-error" id="err-message" style="margin-top:0;">Please write at least 20 characters</span>
+              <span class="form-counter" id="msg-counter" aria-live="polite">0 / 1000</span>
+            </div>
+          </div>
+
+          <!-- Simple maths question — easy for humans, hard for bots -->
+          <div class="form-group">
+            <label class="form-label" for="cf-captcha">Quick check <span class="req">*</span></label>
+            <div style="display:flex;align-items:center;gap:10px;">
+              <span id="captcha-question" style="font-size:14px;font-weight:500;color:var(--plum);flex-shrink:0;min-width:110px;"></span>
+              <input type="number" id="cf-captcha" name="captcha" class="form-input" placeholder="Your answer" style="max-width:140px;" required autocomplete="off"/>
+            </div>
+            <span class="form-field-hint">This helps us filter out spam</span>
+            <span class="form-field-error" id="err-captcha">That doesn't look right — please try again</span>
+          </div>
+
+          <button type="submit" class="form-submit" id="form-submit-btn">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 8h12M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Send message
+          </button>
+          <p class="form-note">We aim to reply within 1–2 business days. Your details are never shared with third parties.</p>
+        </form>
+
+        <!-- Success state (shown after submit) -->
+        <div class="form-success" id="form-success">
+          <div class="form-success-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M5 12l5 5L20 7" stroke="#16a34a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <div class="form-success-title">Message sent!</div>
+          <p class="form-success-sub">Thanks for getting in touch. We'll get back to you within 1–2 business days.<br/>In the meantime, check our <a href="https://roam-for-business-support.tawk.help/" style="color:var(--red);">help centre</a> for quick answers.</p>
+        </div>
+
+        <div class="response-badge">
+          <div class="dot"></div>
+          Typically responds within 1–2 business days
+        </div>
+
       </div>
     </div>
   </section>
@@ -1571,6 +1772,43 @@ footer{background:#100008;padding:48px 40px 28px;}
   </div>
 
 </div><!-- /page-contact -->
+
+<!-- ══ DOWNLOAD MODAL ═══════════════════════════════════════════════════════ -->
+<div class="dl-modal-overlay" id="dl-modal-overlay" role="dialog" aria-modal="true" aria-labelledby="dl-modal-title" onclick="if(event.target===this)closeDlModal()">
+  <div class="dl-modal" id="dl-modal">
+    <button class="dl-modal-close" onclick="closeDlModal()" aria-label="Close">
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 2l10 10M12 2L2 12" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+    </button>
+    <div class="dl-modal-icon" id="dl-modal-icon-wrap">
+      <svg viewBox="0 0 28 28" fill="none"><circle cx="14" cy="14" r="9" stroke="rgba(255,255,255,0.5)" stroke-width="1.5"/><circle cx="14" cy="14" r="5" stroke="rgba(255,255,255,0.7)" stroke-width="1.5"/><circle cx="14" cy="14" r="2" fill="#fff"/></svg>
+    </div>
+    <div class="dl-modal-free" id="dl-modal-free-badge">Free to download</div>
+    <div class="dl-modal-title" id="dl-modal-title">Download Roam</div>
+    <p class="dl-modal-sub" id="dl-modal-sub">Choose your device to get started</p>
+    <div class="dl-modal-options">
+      <a href="https://apps.apple.com/us/app/roarapp/id1137901874?ls=1" class="dl-option apple" target="_blank" rel="noopener" aria-label="Download Roam on the App Store for iPhone and iPad">
+        <img src="https://raw.githubusercontent.com/RoamLocaApp/roam-local-app-website/main/Roam-Logos/apple-app-store-icon.png" alt="App Store" loading="lazy"/>
+        <div class="dl-option-text">
+          <div class="dl-option-label">Apple</div>
+          <div class="dl-option-name">App Store</div>
+          <div class="dl-option-sub">iPhone &amp; iPad · iOS 14+</div>
+        </div>
+        <svg class="dl-option-arrow" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+      <div class="dl-modal-divider">or</div>
+      <a href="https://play.google.com/store/apps/details?id=com.roar.app" class="dl-option android" target="_blank" rel="noopener" aria-label="Download Roam on Google Play for Android">
+        <img src="https://raw.githubusercontent.com/RoamLocaApp/roam-local-app-website/main/Roam-Logos/android-app-store-icon.png" alt="Google Play" loading="lazy"/>
+        <div class="dl-option-text">
+          <div class="dl-option-label">Android</div>
+          <div class="dl-option-name">Google Play</div>
+          <div class="dl-option-sub">Android 8.0+</div>
+        </div>
+        <svg class="dl-option-arrow" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </div>
+    <p class="dl-modal-note" id="dl-modal-note">Free to download · No subscription required to explore</p>
+  </div>
+</div>
 </main>
 
 
@@ -1687,9 +1925,209 @@ document.addEventListener('click', function(e) {
   const btn  = document.getElementById('hamburger');
   if (menu && menu.classList.contains('open') && !menu.contains(e.target) && !btn.contains(e.target)) closeMenu();
 });
+// ── CONTACT FORM LOGIC ──────────────────────────────────────────────────────
+
+(function() {
+  // Record time page loaded — bots submit instantly (< 3 seconds)
+  var loadTime = Date.now();
+  var ltField = document.getElementById('form-load-time');
+  if (ltField) ltField.value = loadTime;
+
+  // Generate maths captcha
+  var captchaAnswer = 0;
+  function genCaptcha() {
+    var a = Math.floor(Math.random() * 9) + 2;
+    var b = Math.floor(Math.random() * 9) + 1;
+    var ops = [
+      { q: a + ' + ' + b + ' =', ans: a + b },
+      { q: a + ' × ' + b + ' =', ans: a * b },
+      { q: (a + b) + ' − ' + b + ' =', ans: a }
+    ];
+    var op = ops[Math.floor(Math.random() * ops.length)];
+    var el = document.getElementById('captcha-question');
+    if (el) el.textContent = op.q;
+    captchaAnswer = op.ans;
+    var inp = document.getElementById('cf-captcha');
+    if (inp) inp.value = '';
+  }
+  genCaptcha();
+
+  // Progress dots
+  var fields = ['cf-fname','cf-lname','cf-email','cf-type','cf-subject','cf-message','cf-captcha'];
+  var dots = [document.getElementById('fdot-0'), document.getElementById('fdot-1'), document.getElementById('fdot-2')];
+  function updateProgress() {
+    var filled = fields.filter(function(id) { var el = document.getElementById(id); return el && el.value.trim().length > 0; }).length;
+    var pct = filled / fields.length;
+    if (dots[0]) { dots[0].className = 'form-step-dot ' + (pct > 0 ? 'done' : 'active'); }
+    if (dots[1]) { dots[1].className = 'form-step-dot ' + (pct >= 0.5 ? 'done' : pct > 0 ? 'active' : ''); }
+    if (dots[2]) { dots[2].className = 'form-step-dot ' + (pct >= 1 ? 'done' : pct >= 0.5 ? 'active' : ''); }
+  }
+  fields.forEach(function(id) {
+    var el = document.getElementById(id);
+    if (el) el.addEventListener('input', updateProgress);
+  });
+
+  // Character counter for message
+  var msgField = document.getElementById('cf-message');
+  var counter = document.getElementById('msg-counter');
+  if (msgField && counter) {
+    msgField.addEventListener('input', function() {
+      var len = msgField.value.length;
+      counter.textContent = len + ' / 1000';
+      counter.className = 'form-counter' + (len > 900 ? ' over' : len > 700 ? ' warn' : '');
+    });
+  }
+
+  // Real-time validation on blur
+  function validateField(id, errId, checkFn) {
+    var el = document.getElementById(id);
+    var err = document.getElementById(errId);
+    if (!el || !err) return true;
+    el.addEventListener('blur', function() {
+      var ok = checkFn(el.value.trim());
+      el.classList.toggle('invalid', !ok);
+      el.classList.toggle('valid', ok && el.value.trim().length > 0);
+      err.classList.toggle('show', !ok && el.value.trim().length > 0);
+    });
+    el.addEventListener('input', function() {
+      if (el.classList.contains('invalid') && checkFn(el.value.trim())) {
+        el.classList.remove('invalid');
+        el.classList.add('valid');
+        err.classList.remove('show');
+      }
+    });
+  }
+  validateField('cf-fname', 'err-fname', function(v) { return v.length >= 2 && v.length <= 50; });
+  validateField('cf-lname', 'err-lname', function(v) { return v.length >= 2 && v.length <= 50; });
+  validateField('cf-email', 'err-email', function(v) { return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v); });
+  validateField('cf-subject', 'err-subject', function(v) { return v.length >= 5; });
+  validateField('cf-message', 'err-message', function(v) { return v.length >= 20; });
+
+  // Form submission
+  var form = document.getElementById('contact-form');
+  if (form) {
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      var valid = true;
+
+      // 1. Honeypot check — if filled, silently fake success (it's a bot)
+      var honey = document.getElementById('website');
+      if (honey && honey.value.trim().length > 0) {
+        showSuccess(); return;
+      }
+
+      // 2. Timing check — submitted in under 3 seconds = likely bot
+      var now = Date.now();
+      var lt = parseInt(document.getElementById('form-load-time').value || '0');
+      if (lt > 0 && (now - lt) < 3000) {
+        showSuccess(); return; // fake success
+      }
+
+      // 3. Validate all fields
+      var fname = document.getElementById('cf-fname').value.trim();
+      var lname = document.getElementById('cf-lname').value.trim();
+      var email = document.getElementById('cf-email').value.trim();
+      var type  = document.getElementById('cf-type').value;
+      var subj  = document.getElementById('cf-subject').value.trim();
+      var msg   = document.getElementById('cf-message').value.trim();
+      var cap   = parseInt(document.getElementById('cf-captcha').value);
+
+      function showErr(id) { var e = document.getElementById(id); if (e) e.classList.add('show'); valid = false; }
+      function hideErr(id) { var e = document.getElementById(id); if (e) e.classList.remove('show'); }
+
+      if (fname.length < 2)  { showErr('err-fname'); } else hideErr('err-fname');
+      if (lname.length < 2)  { showErr('err-lname'); } else hideErr('err-lname');
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { showErr('err-email'); } else hideErr('err-email');
+      if (!type)             { showErr('err-type');  } else hideErr('err-type');
+      if (subj.length < 5)   { showErr('err-subject'); } else hideErr('err-subject');
+      if (msg.length < 20)   { showErr('err-message'); } else hideErr('err-message');
+      if (cap !== captchaAnswer) { showErr('err-captcha'); } else hideErr('err-captcha');
+
+      if (!valid) {
+        // Scroll to first error
+        var firstErr = form.querySelector('.form-field-error.show');
+        if (firstErr) firstErr.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        return;
+      }
+
+      // 4. All good — submit
+      var btn = document.getElementById('form-submit-btn');
+      btn.disabled = true;
+      btn.innerHTML = '<svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6" stroke="currentColor" stroke-width="1.5" stroke-dasharray="20" stroke-dashoffset="0"><animateTransform attributeName="transform" type="rotate" from="0 8 8" to="360 8 8" dur="0.8s" repeatCount="indefinite"/></circle></svg> Sending...';
+
+      // Build mailto link as the delivery mechanism (works without a backend)
+      var body = 'Name: ' + fname + ' ' + lname + '%0D%0AEmail: ' + email + '%0D%0AType: ' + type + '%0D%0ASubject: ' + subj + '%0D%0A%0D%0AMessage:%0D%0A' + encodeURIComponent(msg);
+      var mailto = 'mailto:hello@roam-local.co.uk?subject=' + encodeURIComponent('[Roam Contact] ' + subj) + '&body=' + body;
+      window.location.href = mailto;
+
+      // Show success after short delay
+      setTimeout(showSuccess, 800);
+    });
+  }
+
+  function showSuccess() {
+    var f = document.getElementById('contact-form');
+    var s = document.getElementById('form-success');
+    if (f) f.style.display = 'none';
+    if (s) s.classList.add('show');
+    // Reset progress dots
+    if (dots[0]) { dots[0].className = 'form-step-dot done'; }
+    if (dots[1]) { dots[1].className = 'form-step-dot done'; }
+    if (dots[2]) { dots[2].className = 'form-step-dot done'; }
+  }
+
+})();
+
+
+// ── DOWNLOAD MODAL ───────────────────────────────────────────────────────────
+function openDlModal(mode) {
+  var overlay = document.getElementById('dl-modal-overlay');
+  var modal   = document.getElementById('dl-modal');
+  var title   = document.getElementById('dl-modal-title');
+  var sub     = document.getElementById('dl-modal-sub');
+  var note    = document.getElementById('dl-modal-note');
+  var badge   = document.getElementById('dl-modal-free-badge');
+  var icon    = document.getElementById('dl-modal-icon-wrap');
+
+  if (mode === 'business') {
+    modal.classList.add('biz-mode');
+    title.textContent = 'Activate your business';
+    sub.textContent   = 'Download Roam free to claim and activate your business profile in about 90 seconds.';
+    note.textContent  = 'Free to activate · No contracts · Done entirely in-app';
+    badge.textContent = 'Free to activate';
+    icon.innerHTML    = '<svg viewBox="0 0 28 28" fill="none" width="28" height="28"><rect x="4" y="8" width="20" height="15" rx="3" stroke="rgba(255,255,255,0.6)" stroke-width="1.5"/><path d="M9 8V7a5 5 0 0 1 10 0v1" stroke="rgba(255,255,255,0.6)" stroke-width="1.5"/><circle cx="14" cy="15.5" r="2.5" fill="#3abdd6"/></svg>';
+  } else {
+    modal.classList.remove('biz-mode');
+    title.textContent = 'Download Roam';
+    sub.textContent   = 'Choose your device and start discovering what's local — completely free.';
+    note.textContent  = 'Free to download · No subscription required to explore';
+    badge.textContent = 'Free to download';
+    icon.innerHTML    = '<svg viewBox="0 0 28 28" fill="none" width="28" height="28"><circle cx="14" cy="14" r="9" stroke="rgba(255,255,255,0.5)" stroke-width="1.5"/><circle cx="14" cy="14" r="5" stroke="rgba(255,255,255,0.7)" stroke-width="1.5"/><circle cx="14" cy="14" r="2" fill="#fff"/></svg>';
+  }
+
+  overlay.classList.add('open');
+  document.body.style.overflow = 'hidden';
+
+  // Focus trap — focus the first link
+  setTimeout(function() {
+    var first = overlay.querySelector('.dl-option');
+    if (first) first.focus();
+  }, 100);
+}
+
+function closeDlModal() {
+  document.getElementById('dl-modal-overlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+// Close on Escape (in addition to menu close)
 document.addEventListener('keydown', function(e) {
-  if (e.key === 'Escape') closeMenu();
+  if (e.key === 'Escape') {
+    closeDlModal();
+    closeMenu();
+  }
 });
+
 // Scroll-aware nav — add shadow on scroll
 window.addEventListener('scroll', function() {
   const nav = document.querySelector('nav');
