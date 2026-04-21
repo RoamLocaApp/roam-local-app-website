@@ -973,9 +973,9 @@ footer{background:#100008;padding:48px 40px 28px;}
 }
 .dl-modal-close:hover{background:var(--border);}
 .dl-modal-icon{
-  width:56px;height:56px;border-radius:16px;
-  background:var(--plum);display:flex;align-items:center;justify-content:center;
-  margin:0 auto 16px;
+  width:60px;height:60px;border-radius:16px;
+  background:transparent;display:flex;align-items:center;justify-content:center;
+  margin:0 auto 16px;overflow:hidden;
 }
 .dl-modal-icon svg{width:28px;height:28px;}
 .dl-modal-title{font-size:20px;font-weight:700;color:var(--plum);text-align:center;margin-bottom:6px;}
@@ -1007,7 +1007,7 @@ footer{background:#100008;padding:48px 40px 28px;}
   margin:0 auto 20px;display:flex;justify-content:center;width:fit-content;
 }
 /* Context variant — business modal has blue accents */
-.dl-modal.biz-mode .dl-modal-icon{background:var(--blue-dark);}
+.dl-modal.biz-mode .dl-modal-icon{background:transparent;}
 .dl-modal.biz-mode .dl-option:hover{border-color:var(--blue);background:var(--blue-pale);}
 .dl-modal.biz-mode .dl-option:hover .dl-option-arrow{color:var(--blue);}
 .dl-modal.biz-mode .dl-modal-free{background:var(--blue-pale);color:var(--blue-mid);}
@@ -1772,7 +1772,7 @@ footer{background:#100008;padding:48px 40px 28px;}
       <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 2l10 10M12 2L2 12" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
     </button>
     <div class="dl-modal-icon" id="dl-modal-icon-wrap">
-      <svg viewBox="0 0 28 28" fill="none"><circle cx="14" cy="14" r="9" stroke="rgba(255,255,255,0.5)" stroke-width="1.5"/><circle cx="14" cy="14" r="5" stroke="rgba(255,255,255,0.7)" stroke-width="1.5"/><circle cx="14" cy="14" r="2" fill="#fff"/></svg>
+      <img src="https://raw.githubusercontent.com/RoamLocaApp/roam-local-app-website/main/Roam-Logos/Logo-Roam-fav-icon.png" alt="Roam" style="width:40px;height:40px;object-fit:contain;border-radius:10px;"/>
     </div>
     <div class="dl-modal-free" id="dl-modal-free-badge">Free to download</div>
     <div class="dl-modal-title" id="dl-modal-title">Download Roam</div>
@@ -1862,258 +1862,178 @@ footer{background:#100008;padding:48px 40px 28px;}
 ════════════════════════════════════════════════ -->
 <script>
 
-function toggleMute(vidId, btnId) {
-  var vid = document.getElementById(vidId);
-  var btn = document.getElementById(btnId);
-  vid.muted = !vid.muted;
-  btn.innerHTML = vid.muted
-    ? '<svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 5H5L8 2v10L5 9H2V5z" fill="#fff"/><path d="M10 4.5c1 .8 1.5 1.8 1.5 2.5S11 9.2 10 10" stroke="#fff" stroke-width="1.2" stroke-linecap="round"/></svg>'
-    : '<svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 5H5L8 2v10L5 9H2V5z" fill="#fff"/><line x1="10" y1="4" x2="13" y2="7" stroke="#fff" stroke-width="1.2" stroke-linecap="round"/><line x1="13" y1="4" x2="10" y2="7" stroke="#fff" stroke-width="1.2" stroke-linecap="round"/></svg>';
-}
+function toggleMute(a,b){var v=document.getElementById(a),btn=document.getElementById(b);v.muted=!v.muted;btn.innerHTML=v.muted?'<svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 5H5L8 2v10L5 9H2V5z" fill="#fff"/></svg>':'<svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 5H5L8 2v10L5 9H2V5z" fill="#fff"/><line x1="10" y1="4" x2="13" y2="7" stroke="#fff" stroke-width="1.3" stroke-linecap="round"/><line x1="13" y1="4" x2="10" y2="7" stroke="#fff" stroke-width="1.3" stroke-linecap="round"/></svg>';}
 
-function showPage(id) {
-  document.querySelectorAll('.page').forEach(function(p) { p.classList.remove('active'); });
-  document.getElementById('page-' + id).classList.add('active');
-  ['home','business','about','contact'].forEach(function(p) {
-    var el = document.getElementById('nl-' + p);
-    if (el) el.classList.toggle('active', p === id);
-    var mel = document.getElementById('mnl-' + p);
-    if (mel) mel.classList.toggle('active', p === id);
+function showPage(id){
+  document.querySelectorAll('.page').forEach(function(p){p.classList.remove('active');});
+  document.getElementById('page-'+id).classList.add('active');
+  ['home','business','about','contact'].forEach(function(p){
+    var el=document.getElementById('nl-'+p);if(el)el.classList.toggle('active',p===id);
+    var mel=document.getElementById('mnl-'+p);if(mel)mel.classList.toggle('active',p===id);
   });
-  var titles = {home:'Roam — Become a local everywhere',business:'For Business — Roam',about:'About — Roam',contact:'Contact — Roam'};
-  document.title = titles[id] || 'Roam';
-  window.history.pushState({page:id}, titles[id], '#' + id);
+  var t={home:'Roam',business:'For Business — Roam',about:'About — Roam',contact:'Contact — Roam'};
+  document.title=t[id]||'Roam';
+  try{window.history.pushState({page:id},t[id],'#'+id);}catch(e){}
   window.scrollTo({top:0,behavior:'smooth'});
 }
 
-window.addEventListener('popstate', function(e) {
-  if (e.state && e.state.page) showPage(e.state.page);
-});
-
-var initPage = window.location.hash.replace('#','') || 'home';
-if (['home','business','about','contact'].indexOf(initPage) > -1) showPage(initPage);
-
-function toggleMenu() {
-  var menu = document.getElementById('mobile-nav');
-  var btn  = document.getElementById('hamburger');
-  var open = menu.classList.toggle('open');
-  btn.classList.toggle('open', open);
-  btn.setAttribute('aria-expanded', open);
-  menu.setAttribute('aria-hidden', String(!open));
-  document.body.style.overflow = open ? 'hidden' : '';
+function toggleMenu(){
+  var m=document.getElementById('mobile-nav'),b=document.getElementById('hamburger');
+  if(!m||!b)return;
+  var o=m.classList.toggle('open');
+  b.classList.toggle('open',o);
+  b.setAttribute('aria-expanded',String(o));
+  m.setAttribute('aria-hidden',String(!o));
+  document.body.style.overflow=o?'hidden':'';
 }
 
-function closeMenu() {
-  var menu = document.getElementById('mobile-nav');
-  var btn  = document.getElementById('hamburger');
-  if (!menu) return;
-  menu.classList.remove('open');
-  btn.classList.remove('open');
-  btn.setAttribute('aria-expanded', 'false');
-  menu.setAttribute('aria-hidden', 'true');
-  document.body.style.overflow = '';
+function closeMenu(){
+  var m=document.getElementById('mobile-nav'),b=document.getElementById('hamburger');
+  if(!m||!b)return;
+  m.classList.remove('open');b.classList.remove('open');
+  b.setAttribute('aria-expanded','false');m.setAttribute('aria-hidden','true');
+  document.body.style.overflow='';
 }
 
-document.addEventListener('click', function(e) {
-  var menu = document.getElementById('mobile-nav');
-  var btn  = document.getElementById('hamburger');
-  if (menu && menu.classList.contains('open') && !menu.contains(e.target) && !btn.contains(e.target)) closeMenu();
-});
-
-window.addEventListener('scroll', function() {
-  var nav = document.querySelector('nav');
-  if (nav) nav.style.boxShadow = window.scrollY > 10 ? '0 4px 24px rgba(0,0,0,0.4)' : 'none';
-}, {passive:true});
-
-// ── DOWNLOAD MODAL ────────────────────────────────────────────────────────────
-function openDlModal(mode) {
-  var overlay = document.getElementById('dl-modal-overlay');
-  var modal   = document.getElementById('dl-modal');
-  var title   = document.getElementById('dl-modal-title');
-  var sub     = document.getElementById('dl-modal-sub');
-  var note    = document.getElementById('dl-modal-note');
-  var badge   = document.getElementById('dl-modal-free-badge');
-  var icon    = document.getElementById('dl-modal-icon-wrap');
-  if (!overlay) return;
-  if (mode === 'business') {
-    modal.classList.add('biz-mode');
-    if (title) title.textContent = 'Activate your business';
-    if (sub)   sub.textContent   = 'Download Roam free to claim and activate your business profile in about 90 seconds.';
-    if (note)  note.textContent  = 'Free to activate \u00b7 No contracts \u00b7 Done entirely in-app';
-    if (badge) badge.textContent = 'Free to activate';
-    if (icon)  icon.innerHTML    = '<svg viewBox="0 0 28 28" fill="none" width="28" height="28"><rect x="4" y="8" width="20" height="15" rx="3" stroke="rgba(255,255,255,0.6)" stroke-width="1.5"/><path d="M9 8V7a5 5 0 0 1 10 0v1" stroke="rgba(255,255,255,0.6)" stroke-width="1.5"/><circle cx="14" cy="15.5" r="2.5" fill="#3abdd6"/></svg>';
+function openDlModal(mode){
+  var o=document.getElementById('dl-modal-overlay');
+  var modal=document.getElementById('dl-modal');
+  if(!o||!modal)return;
+  var isBiz=(mode==='business');
+  modal.className='dl-modal'+(isBiz?' biz-mode':'');
+  var t=document.getElementById('dl-modal-title');
+  var s=document.getElementById('dl-modal-sub');
+  var n=document.getElementById('dl-modal-note');
+  var badge=document.getElementById('dl-modal-free-badge');
+  if(isBiz){
+    if(t)t.textContent='Activate your business';
+    if(s)s.textContent='Download Roam free to claim and activate your business profile in about 90 seconds.';
+    if(n)n.textContent='Free to activate. No contracts. Done entirely in-app.';
+    if(badge)badge.textContent='Free to activate';
   } else {
-    modal.classList.remove('biz-mode');
-    if (title) title.textContent = 'Download Roam';
-    if (sub)   sub.textContent   = 'Choose your device and start discovering what\'s local \u2014 completely free.';
-    if (note)  note.textContent  = 'Free to download \u00b7 No subscription required to explore';
-    if (badge) badge.textContent = 'Free to download';
-    if (icon)  icon.innerHTML    = '<svg viewBox="0 0 28 28" fill="none" width="28" height="28"><circle cx="14" cy="14" r="9" stroke="rgba(255,255,255,0.5)" stroke-width="1.5"/><circle cx="14" cy="14" r="5" stroke="rgba(255,255,255,0.7)" stroke-width="1.5"/><circle cx="14" cy="14" r="2" fill="#fff"/></svg>';
+    if(t)t.textContent='Download Roam';
+    if(s)s.textContent='Choose your device and start discovering what's local — completely free.';
+    if(n)n.textContent='Free to download. No subscription required to explore.';
+    if(badge)badge.textContent='Free to download';
   }
-  overlay.classList.add('open');
-  document.body.style.overflow = 'hidden';
-  setTimeout(function() {
-    var first = overlay.querySelector('.dl-option');
-    if (first) first.focus();
-  }, 100);
+  o.classList.add('open');
+  document.body.style.overflow='hidden';
+  setTimeout(function(){var f=o.querySelector('.dl-option');if(f)f.focus();},100);
 }
 
-function closeDlModal() {
-  var overlay = document.getElementById('dl-modal-overlay');
-  if (overlay) overlay.classList.remove('open');
-  document.body.style.overflow = '';
+function closeDlModal(){
+  var o=document.getElementById('dl-modal-overlay');
+  if(o)o.classList.remove('open');
+  document.body.style.overflow='';
 }
 
-document.addEventListener('keydown', function(e) {
-  if (e.key === 'Escape') { closeDlModal(); closeMenu(); }
+document.addEventListener('click',function(e){
+  var m=document.getElementById('mobile-nav'),b=document.getElementById('hamburger');
+  if(m&&m.classList.contains('open')&&!m.contains(e.target)&&b&&!b.contains(e.target))closeMenu();
+  var o=document.getElementById('dl-modal-overlay');
+  if(o&&o.classList.contains('open')&&e.target===o)closeDlModal();
 });
 
-// ── CONTACT FORM ──────────────────────────────────────────────────────────────
-(function() {
-  var loadTime = Date.now();
-  var ltField = document.getElementById('form-load-time');
-  if (ltField) ltField.value = loadTime;
+document.addEventListener('keydown',function(e){if(e.key==='Escape'){closeDlModal();closeMenu();}});
 
-  var captchaAnswer = 0;
-  function genCaptcha() {
-    var a = Math.floor(Math.random() * 9) + 2;
-    var b = Math.floor(Math.random() * 9) + 1;
-    var ops = [
-      {q: a + ' + ' + b + ' =', ans: a + b},
-      {q: a + ' \u00d7 ' + b + ' =', ans: a * b},
-      {q: (a + b) + ' \u2212 ' + b + ' =', ans: a}
-    ];
-    var op = ops[Math.floor(Math.random() * ops.length)];
-    var el = document.getElementById('captcha-question');
-    if (el) el.textContent = op.q;
-    captchaAnswer = op.ans;
-    var inp = document.getElementById('cf-captcha');
-    if (inp) inp.value = '';
+window.addEventListener('scroll',function(){
+  var n=document.querySelector('nav');
+  if(n)n.style.boxShadow=window.scrollY>10?'0 4px 24px rgba(0,0,0,0.4)':'none';
+},{passive:true});
+
+window.addEventListener('popstate',function(e){if(e.state&&e.state.page)showPage(e.state.page);});
+
+(function(){
+  var h=window.location.hash.replace('#','');
+  showPage(['home','business','about','contact'].indexOf(h)>-1?h:'home');
+
+  // Contact form
+  var loadT=Date.now();
+  var lf=document.getElementById('form-load-time');if(lf)lf.value=loadT;
+
+  var ans=0;
+  function newCaptcha(){
+    var a=Math.floor(Math.random()*9)+2,b=Math.floor(Math.random()*9)+1;
+    var q=document.getElementById('captcha-question'),inp=document.getElementById('cf-captcha');
+    if(!q)return;
+    var r=Math.floor(Math.random()*2);
+    if(r===0){q.textContent=a+' + '+b+' =';ans=a+b;}
+    else{q.textContent=a+' x '+b+' =';ans=a*b;}
+    if(inp)inp.value='';
   }
-  genCaptcha();
+  newCaptcha();
 
-  var fields = ['cf-fname','cf-lname','cf-email','cf-type','cf-subject','cf-message','cf-captcha'];
-  var dots = [
-    document.getElementById('fdot-0'),
-    document.getElementById('fdot-1'),
-    document.getElementById('fdot-2')
-  ];
-
-  function updateProgress() {
-    var filled = fields.filter(function(id) {
-      var el = document.getElementById(id);
-      return el && el.value.trim().length > 0;
-    }).length;
-    var pct = filled / fields.length;
-    if (dots[0]) dots[0].className = 'form-step-dot ' + (pct > 0 ? 'done' : 'active');
-    if (dots[1]) dots[1].className = 'form-step-dot ' + (pct >= 0.5 ? 'done' : pct > 0 ? 'active' : '');
-    if (dots[2]) dots[2].className = 'form-step-dot ' + (pct >= 1 ? 'done' : pct >= 0.5 ? 'active' : '');
-  }
-
-  fields.forEach(function(id) {
-    var el = document.getElementById(id);
-    if (el) el.addEventListener('input', updateProgress);
+  var fids=['cf-fname','cf-lname','cf-email','cf-type','cf-subject','cf-message','cf-captcha'];
+  fids.forEach(function(id){
+    var el=document.getElementById(id);
+    if(el)el.addEventListener('input',function(){
+      var filled=fids.filter(function(x){var e=document.getElementById(x);return e&&e.value.trim();}).length;
+      var p=filled/fids.length;
+      ['fdot-0','fdot-1','fdot-2'].forEach(function(did,i){
+        var d=document.getElementById(did);if(!d)return;
+        d.className='form-step-dot '+(p>((i+1)/3)?'done':p>=(i/3)&&p>0?'active':'');
+      });
+    });
   });
 
-  var msgField = document.getElementById('cf-message');
-  var counter  = document.getElementById('msg-counter');
-  if (msgField && counter) {
-    msgField.addEventListener('input', function() {
-      var len = msgField.value.length;
-      counter.textContent = len + ' / 1000';
-      counter.className = 'form-counter' + (len > 900 ? ' over' : len > 700 ? ' warn' : '');
-    });
-  }
+  var msg=document.getElementById('cf-message'),ctr=document.getElementById('msg-counter');
+  if(msg&&ctr)msg.addEventListener('input',function(){
+    var l=msg.value.length;
+    ctr.textContent=l+' / 1000';
+    ctr.className='form-counter'+(l>900?' over':l>700?' warn':'');
+  });
 
-  function isValidEmail(v) {
-    return v.indexOf('@') > 0 && v.indexOf('.') > 0 && v.length > 5;
-  }
+  var form=document.getElementById('contact-form');
+  if(!form)return;
 
-  function setupFieldValidation(id, errId, checkFn) {
-    var el  = document.getElementById(id);
-    var err = document.getElementById(errId);
-    if (!el || !err) return;
-    el.addEventListener('blur', function() {
-      var ok = checkFn(el.value.trim());
-      el.classList.toggle('invalid', !ok);
-      el.classList.toggle('valid', ok && el.value.trim().length > 0);
-      if (!ok && el.value.trim().length > 0) err.classList.add('show');
-      else err.classList.remove('show');
-    });
-    el.addEventListener('input', function() {
-      if (el.classList.contains('invalid') && checkFn(el.value.trim())) {
-        el.classList.remove('invalid');
-        el.classList.add('valid');
-        err.classList.remove('show');
-      }
-    });
-  }
-
-  setupFieldValidation('cf-fname',   'err-fname',   function(v) { return v.length >= 2; });
-  setupFieldValidation('cf-lname',   'err-lname',   function(v) { return v.length >= 2; });
-  setupFieldValidation('cf-email',   'err-email',   isValidEmail);
-  setupFieldValidation('cf-subject', 'err-subject', function(v) { return v.length >= 5; });
-  setupFieldValidation('cf-message', 'err-message', function(v) { return v.length >= 20; });
-
-  var form = document.getElementById('contact-form');
-  if (!form) return;
-
-  form.addEventListener('submit', function(e) {
+  form.addEventListener('submit',function(e){
     e.preventDefault();
-    var valid = true;
+    var honey=document.getElementById('website');
+    if(honey&&honey.value.trim()){fakeOK();return;}
+    if(Date.now()-loadT<3000){fakeOK();return;}
 
-    var honey = document.getElementById('website');
-    if (honey && honey.value.trim().length > 0) { showFormSuccess(); return; }
-
-    var now = Date.now();
-    var lt  = parseInt((document.getElementById('form-load-time') || {}).value || '0');
-    if (lt > 0 && (now - lt) < 3000) { showFormSuccess(); return; }
-
-    var fname = (document.getElementById('cf-fname') || {}).value || '';
-    var lname = (document.getElementById('cf-lname') || {}).value || '';
-    var email = (document.getElementById('cf-email') || {}).value || '';
-    var type  = (document.getElementById('cf-type')  || {}).value || '';
-    var subj  = (document.getElementById('cf-subject')|| {}).value || '';
-    var msg   = (document.getElementById('cf-message')|| {}).value || '';
-    var cap   = parseInt((document.getElementById('cf-captcha') || {}).value || '0');
-
-    fname = fname.trim(); lname = lname.trim();
-    email = email.trim(); subj  = subj.trim(); msg = msg.trim();
-
-    function showErr(id)  { var el = document.getElementById(id); if (el) el.classList.add('show');    else valid = false; valid = false; }
-    function clearErr(id) { var el = document.getElementById(id); if (el) el.classList.remove('show'); }
-
-    if (fname.length < 2)      { showErr('err-fname');   } else clearErr('err-fname');
-    if (lname.length < 2)      { showErr('err-lname');   } else clearErr('err-lname');
-    if (!isValidEmail(email))  { showErr('err-email');   } else clearErr('err-email');
-    if (!type)                 { showErr('err-type');    } else clearErr('err-type');
-    if (subj.length < 5)       { showErr('err-subject'); } else clearErr('err-subject');
-    if (msg.length < 20)       { showErr('err-message'); } else clearErr('err-message');
-    if (cap !== captchaAnswer) { showErr('err-captcha'); genCaptcha(); } else clearErr('err-captcha');
-
-    if (!valid) {
-      var firstErr = form.querySelector('.form-field-error.show');
-      if (firstErr) firstErr.scrollIntoView({behavior:'smooth', block:'center'});
-      return;
+    var ok=true;
+    function chk(id,errId,testFn){
+      var el=document.getElementById(id),er=document.getElementById(errId);
+      var val=el?el.value.trim():'';
+      var pass=testFn(val);
+      if(el){el.classList.toggle('valid',pass&&val.length>0);el.classList.toggle('invalid',!pass);}
+      if(er){if(!pass&&val.length>0)er.classList.add('show');else er.classList.remove('show');}
+      if(!pass)ok=false;
     }
+    chk('cf-fname','err-fname',function(v){return v.length>=2;});
+    chk('cf-lname','err-lname',function(v){return v.length>=2;});
+    chk('cf-email','err-email',function(v){return v.indexOf('@')>0&&v.length>5;});
+    chk('cf-subject','err-subject',function(v){return v.length>=5;});
+    chk('cf-message','err-message',function(v){return v.length>=20;});
 
-    var btn = document.getElementById('form-submit-btn');
-    if (btn) { btn.disabled = true; btn.textContent = 'Sending...'; }
+    var typeEl=document.getElementById('cf-type'),typeErr=document.getElementById('err-type');
+    if(typeEl&&!typeEl.value){if(typeErr)typeErr.classList.add('show');ok=false;}
+    else if(typeErr)typeErr.classList.remove('show');
 
-    var body = 'Name: ' + fname + ' ' + lname + '\r\nEmail: ' + email + '\r\nType: ' + type + '\r\nSubject: ' + subj + '\r\n\r\nMessage:\r\n' + msg;
-    window.location.href = 'mailto:hello@roam-local.co.uk?subject=' + encodeURIComponent('[Roam Contact] ' + subj) + '&body=' + encodeURIComponent(body);
+    var capEl=document.getElementById('cf-captcha'),capErr=document.getElementById('err-captcha');
+    if(capEl&&parseInt(capEl.value)!==ans){if(capErr)capErr.classList.add('show');newCaptcha();ok=false;}
+    else if(capErr)capErr.classList.remove('show');
 
-    setTimeout(showFormSuccess, 800);
+    if(!ok){var fe=form.querySelector('.form-field-error.show');if(fe)fe.scrollIntoView({behavior:'smooth',block:'center'});return;}
+
+    var btn=document.getElementById('form-submit-btn');
+    if(btn){btn.disabled=true;btn.textContent='Sending...';}
+
+    var fn=(document.getElementById('cf-fname')||{}).value||'';
+    var ln=(document.getElementById('cf-lname')||{}).value||'';
+    var em=(document.getElementById('cf-email')||{}).value||'';
+    var ty=(document.getElementById('cf-type')||{}).value||'';
+    var su=(document.getElementById('cf-subject')||{}).value||'';
+    var ms=(document.getElementById('cf-message')||{}).value||'';
+    var body='Name: '+fn+' '+ln+'\r\nEmail: '+em+'\r\nType: '+ty+'\r\n\r\n'+ms;
+    window.location.href='mailto:hello@roam-local.co.uk?subject='+encodeURIComponent('[Roam] '+su)+'&body='+encodeURIComponent(body);
+    setTimeout(fakeOK,800);
   });
 
-  function showFormSuccess() {
-    var f = document.getElementById('contact-form');
-    var s = document.getElementById('form-success');
-    if (f) f.style.display = 'none';
-    if (s) s.classList.add('show');
-    if (dots[0]) dots[0].className = 'form-step-dot done';
-    if (dots[1]) dots[1].className = 'form-step-dot done';
-    if (dots[2]) dots[2].className = 'form-step-dot done';
+  function fakeOK(){
+    var f=document.getElementById('contact-form'),s=document.getElementById('form-success');
+    if(f)f.style.display='none';if(s)s.classList.add('show');
   }
 })();
 
