@@ -1861,75 +1861,127 @@ footer{background:#100008;padding:48px 40px 28px;}
      JAVASCRIPT — PAGE ROUTING
 ════════════════════════════════════════════════ -->
 <script>
+
 function toggleMute(vidId, btnId) {
-  const vid = document.getElementById(vidId);
-  const btn = document.getElementById(btnId);
+  var vid = document.getElementById(vidId);
+  var btn = document.getElementById(btnId);
   vid.muted = !vid.muted;
   btn.innerHTML = vid.muted
     ? '<svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 5H5L8 2v10L5 9H2V5z" fill="#fff"/><path d="M10 4.5c1 .8 1.5 1.8 1.5 2.5S11 9.2 10 10" stroke="#fff" stroke-width="1.2" stroke-linecap="round"/></svg>'
     : '<svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 5H5L8 2v10L5 9H2V5z" fill="#fff"/><line x1="10" y1="4" x2="13" y2="7" stroke="#fff" stroke-width="1.2" stroke-linecap="round"/><line x1="13" y1="4" x2="10" y2="7" stroke="#fff" stroke-width="1.2" stroke-linecap="round"/></svg>';
 }
+
 function showPage(id) {
-  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.page').forEach(function(p) { p.classList.remove('active'); });
   document.getElementById('page-' + id).classList.add('active');
-  ['home','business','about','contact'].forEach(p => {
-    const el = document.getElementById('nl-' + p);
+  ['home','business','about','contact'].forEach(function(p) {
+    var el = document.getElementById('nl-' + p);
     if (el) el.classList.toggle('active', p === id);
-    const mel = document.getElementById('mnl-' + p);
+    var mel = document.getElementById('mnl-' + p);
     if (mel) mel.classList.toggle('active', p === id);
   });
-  const titles = {home:'Roam — Become a local everywhere',business:'For Business — Roam',about:'About — Roam',contact:'Contact — Roam'};
+  var titles = {home:'Roam — Become a local everywhere',business:'For Business — Roam',about:'About — Roam',contact:'Contact — Roam'};
   document.title = titles[id] || 'Roam';
   window.history.pushState({page:id}, titles[id], '#' + id);
   window.scrollTo({top:0,behavior:'smooth'});
 }
-// Handle browser back/forward
+
 window.addEventListener('popstate', function(e) {
   if (e.state && e.state.page) showPage(e.state.page);
 });
-// Init from URL hash
-const initPage = window.location.hash.replace('#','') || 'home';
-if (['home','business','about','contact'].includes(initPage)) showPage(initPage);
+
+var initPage = window.location.hash.replace('#','') || 'home';
+if (['home','business','about','contact'].indexOf(initPage) > -1) showPage(initPage);
+
 function toggleMenu() {
-  const menu = document.getElementById('mobile-nav');
-  const btn  = document.getElementById('hamburger');
-  const open = menu.classList.toggle('open');
+  var menu = document.getElementById('mobile-nav');
+  var btn  = document.getElementById('hamburger');
+  var open = menu.classList.toggle('open');
   btn.classList.toggle('open', open);
   btn.setAttribute('aria-expanded', open);
-  menu.setAttribute('aria-hidden', !open);
+  menu.setAttribute('aria-hidden', String(!open));
   document.body.style.overflow = open ? 'hidden' : '';
 }
+
 function closeMenu() {
-  const menu = document.getElementById('mobile-nav');
-  const btn  = document.getElementById('hamburger');
+  var menu = document.getElementById('mobile-nav');
+  var btn  = document.getElementById('hamburger');
+  if (!menu) return;
   menu.classList.remove('open');
   btn.classList.remove('open');
   btn.setAttribute('aria-expanded', 'false');
   menu.setAttribute('aria-hidden', 'true');
   document.body.style.overflow = '';
 }
+
 document.addEventListener('click', function(e) {
-  const menu = document.getElementById('mobile-nav');
-  const btn  = document.getElementById('hamburger');
+  var menu = document.getElementById('mobile-nav');
+  var btn  = document.getElementById('hamburger');
   if (menu && menu.classList.contains('open') && !menu.contains(e.target) && !btn.contains(e.target)) closeMenu();
 });
-// ── CONTACT FORM LOGIC ──────────────────────────────────────────────────────
 
+window.addEventListener('scroll', function() {
+  var nav = document.querySelector('nav');
+  if (nav) nav.style.boxShadow = window.scrollY > 10 ? '0 4px 24px rgba(0,0,0,0.4)' : 'none';
+}, {passive:true});
+
+// ── DOWNLOAD MODAL ────────────────────────────────────────────────────────────
+function openDlModal(mode) {
+  var overlay = document.getElementById('dl-modal-overlay');
+  var modal   = document.getElementById('dl-modal');
+  var title   = document.getElementById('dl-modal-title');
+  var sub     = document.getElementById('dl-modal-sub');
+  var note    = document.getElementById('dl-modal-note');
+  var badge   = document.getElementById('dl-modal-free-badge');
+  var icon    = document.getElementById('dl-modal-icon-wrap');
+  if (!overlay) return;
+  if (mode === 'business') {
+    modal.classList.add('biz-mode');
+    if (title) title.textContent = 'Activate your business';
+    if (sub)   sub.textContent   = 'Download Roam free to claim and activate your business profile in about 90 seconds.';
+    if (note)  note.textContent  = 'Free to activate \u00b7 No contracts \u00b7 Done entirely in-app';
+    if (badge) badge.textContent = 'Free to activate';
+    if (icon)  icon.innerHTML    = '<svg viewBox="0 0 28 28" fill="none" width="28" height="28"><rect x="4" y="8" width="20" height="15" rx="3" stroke="rgba(255,255,255,0.6)" stroke-width="1.5"/><path d="M9 8V7a5 5 0 0 1 10 0v1" stroke="rgba(255,255,255,0.6)" stroke-width="1.5"/><circle cx="14" cy="15.5" r="2.5" fill="#3abdd6"/></svg>';
+  } else {
+    modal.classList.remove('biz-mode');
+    if (title) title.textContent = 'Download Roam';
+    if (sub)   sub.textContent   = 'Choose your device and start discovering what\'s local \u2014 completely free.';
+    if (note)  note.textContent  = 'Free to download \u00b7 No subscription required to explore';
+    if (badge) badge.textContent = 'Free to download';
+    if (icon)  icon.innerHTML    = '<svg viewBox="0 0 28 28" fill="none" width="28" height="28"><circle cx="14" cy="14" r="9" stroke="rgba(255,255,255,0.5)" stroke-width="1.5"/><circle cx="14" cy="14" r="5" stroke="rgba(255,255,255,0.7)" stroke-width="1.5"/><circle cx="14" cy="14" r="2" fill="#fff"/></svg>';
+  }
+  overlay.classList.add('open');
+  document.body.style.overflow = 'hidden';
+  setTimeout(function() {
+    var first = overlay.querySelector('.dl-option');
+    if (first) first.focus();
+  }, 100);
+}
+
+function closeDlModal() {
+  var overlay = document.getElementById('dl-modal-overlay');
+  if (overlay) overlay.classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') { closeDlModal(); closeMenu(); }
+});
+
+// ── CONTACT FORM ──────────────────────────────────────────────────────────────
 (function() {
-  // Record time page loaded — bots submit instantly (< 3 seconds)
   var loadTime = Date.now();
   var ltField = document.getElementById('form-load-time');
   if (ltField) ltField.value = loadTime;
 
-  // Generate maths captcha
   var captchaAnswer = 0;
   function genCaptcha() {
     var a = Math.floor(Math.random() * 9) + 2;
     var b = Math.floor(Math.random() * 9) + 1;
     var ops = [
-      { q: a + ' + ' + b + ' =', ans: a + b },
-      { q: a + ' × ' + b + ' =', ans: a * b },
-      { q: (a + b) + ' − ' + b + ' =', ans: a }
+      {q: a + ' + ' + b + ' =', ans: a + b},
+      {q: a + ' \u00d7 ' + b + ' =', ans: a * b},
+      {q: (a + b) + ' \u2212 ' + b + ' =', ans: a}
     ];
     var op = ops[Math.floor(Math.random() * ops.length)];
     var el = document.getElementById('captcha-question');
@@ -1940,24 +1992,31 @@ document.addEventListener('click', function(e) {
   }
   genCaptcha();
 
-  // Progress dots
   var fields = ['cf-fname','cf-lname','cf-email','cf-type','cf-subject','cf-message','cf-captcha'];
-  var dots = [document.getElementById('fdot-0'), document.getElementById('fdot-1'), document.getElementById('fdot-2')];
+  var dots = [
+    document.getElementById('fdot-0'),
+    document.getElementById('fdot-1'),
+    document.getElementById('fdot-2')
+  ];
+
   function updateProgress() {
-    var filled = fields.filter(function(id) { var el = document.getElementById(id); return el && el.value.trim().length > 0; }).length;
+    var filled = fields.filter(function(id) {
+      var el = document.getElementById(id);
+      return el && el.value.trim().length > 0;
+    }).length;
     var pct = filled / fields.length;
-    if (dots[0]) { dots[0].className = 'form-step-dot ' + (pct > 0 ? 'done' : 'active'); }
-    if (dots[1]) { dots[1].className = 'form-step-dot ' + (pct >= 0.5 ? 'done' : pct > 0 ? 'active' : ''); }
-    if (dots[2]) { dots[2].className = 'form-step-dot ' + (pct >= 1 ? 'done' : pct >= 0.5 ? 'active' : ''); }
+    if (dots[0]) dots[0].className = 'form-step-dot ' + (pct > 0 ? 'done' : 'active');
+    if (dots[1]) dots[1].className = 'form-step-dot ' + (pct >= 0.5 ? 'done' : pct > 0 ? 'active' : '');
+    if (dots[2]) dots[2].className = 'form-step-dot ' + (pct >= 1 ? 'done' : pct >= 0.5 ? 'active' : '');
   }
+
   fields.forEach(function(id) {
     var el = document.getElementById(id);
     if (el) el.addEventListener('input', updateProgress);
   });
 
-  // Character counter for message
   var msgField = document.getElementById('cf-message');
-  var counter = document.getElementById('msg-counter');
+  var counter  = document.getElementById('msg-counter');
   if (msgField && counter) {
     msgField.addEventListener('input', function() {
       var len = msgField.value.length;
@@ -1966,16 +2025,20 @@ document.addEventListener('click', function(e) {
     });
   }
 
-  // Real-time validation on blur
-  function validateField(id, errId, checkFn) {
-    var el = document.getElementById(id);
+  function isValidEmail(v) {
+    return v.indexOf('@') > 0 && v.indexOf('.') > 0 && v.length > 5;
+  }
+
+  function setupFieldValidation(id, errId, checkFn) {
+    var el  = document.getElementById(id);
     var err = document.getElementById(errId);
-    if (!el || !err) return true;
+    if (!el || !err) return;
     el.addEventListener('blur', function() {
       var ok = checkFn(el.value.trim());
       el.classList.toggle('invalid', !ok);
       el.classList.toggle('valid', ok && el.value.trim().length > 0);
-      err.classList.toggle('show', !ok && el.value.trim().length > 0);
+      if (!ok && el.value.trim().length > 0) err.classList.add('show');
+      else err.classList.remove('show');
     });
     el.addEventListener('input', function() {
       if (el.classList.contains('invalid') && checkFn(el.value.trim())) {
@@ -1985,146 +2048,75 @@ document.addEventListener('click', function(e) {
       }
     });
   }
-  validateField('cf-fname', 'err-fname', function(v) { return v.length >= 2 && v.length <= 50; });
-  validateField('cf-lname', 'err-lname', function(v) { return v.length >= 2 && v.length <= 50; });
-  validateField('cf-email', 'err-email', function(v) { return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v); });
-  validateField('cf-subject', 'err-subject', function(v) { return v.length >= 5; });
-  validateField('cf-message', 'err-message', function(v) { return v.length >= 20; });
 
-  // Form submission
+  setupFieldValidation('cf-fname',   'err-fname',   function(v) { return v.length >= 2; });
+  setupFieldValidation('cf-lname',   'err-lname',   function(v) { return v.length >= 2; });
+  setupFieldValidation('cf-email',   'err-email',   isValidEmail);
+  setupFieldValidation('cf-subject', 'err-subject', function(v) { return v.length >= 5; });
+  setupFieldValidation('cf-message', 'err-message', function(v) { return v.length >= 20; });
+
   var form = document.getElementById('contact-form');
-  if (form) {
-    form.addEventListener('submit', function(e) {
-      e.preventDefault();
-      var valid = true;
+  if (!form) return;
 
-      // 1. Honeypot check — if filled, silently fake success (it's a bot)
-      var honey = document.getElementById('website');
-      if (honey && honey.value.trim().length > 0) {
-        showSuccess(); return;
-      }
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    var valid = true;
 
-      // 2. Timing check — submitted in under 3 seconds = likely bot
-      var now = Date.now();
-      var lt = parseInt(document.getElementById('form-load-time').value || '0');
-      if (lt > 0 && (now - lt) < 3000) {
-        showSuccess(); return; // fake success
-      }
+    var honey = document.getElementById('website');
+    if (honey && honey.value.trim().length > 0) { showFormSuccess(); return; }
 
-      // 3. Validate all fields
-      var fname = document.getElementById('cf-fname').value.trim();
-      var lname = document.getElementById('cf-lname').value.trim();
-      var email = document.getElementById('cf-email').value.trim();
-      var type  = document.getElementById('cf-type').value;
-      var subj  = document.getElementById('cf-subject').value.trim();
-      var msg   = document.getElementById('cf-message').value.trim();
-      var cap   = parseInt(document.getElementById('cf-captcha').value);
+    var now = Date.now();
+    var lt  = parseInt((document.getElementById('form-load-time') || {}).value || '0');
+    if (lt > 0 && (now - lt) < 3000) { showFormSuccess(); return; }
 
-      function showErr(id) { var e = document.getElementById(id); if (e) e.classList.add('show'); valid = false; }
-      function hideErr(id) { var e = document.getElementById(id); if (e) e.classList.remove('show'); }
+    var fname = (document.getElementById('cf-fname') || {}).value || '';
+    var lname = (document.getElementById('cf-lname') || {}).value || '';
+    var email = (document.getElementById('cf-email') || {}).value || '';
+    var type  = (document.getElementById('cf-type')  || {}).value || '';
+    var subj  = (document.getElementById('cf-subject')|| {}).value || '';
+    var msg   = (document.getElementById('cf-message')|| {}).value || '';
+    var cap   = parseInt((document.getElementById('cf-captcha') || {}).value || '0');
 
-      if (fname.length < 2)  { showErr('err-fname'); } else hideErr('err-fname');
-      if (lname.length < 2)  { showErr('err-lname'); } else hideErr('err-lname');
-      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { showErr('err-email'); } else hideErr('err-email');
-      if (!type)             { showErr('err-type');  } else hideErr('err-type');
-      if (subj.length < 5)   { showErr('err-subject'); } else hideErr('err-subject');
-      if (msg.length < 20)   { showErr('err-message'); } else hideErr('err-message');
-      if (cap !== captchaAnswer) { showErr('err-captcha'); } else hideErr('err-captcha');
+    fname = fname.trim(); lname = lname.trim();
+    email = email.trim(); subj  = subj.trim(); msg = msg.trim();
 
-      if (!valid) {
-        // Scroll to first error
-        var firstErr = form.querySelector('.form-field-error.show');
-        if (firstErr) firstErr.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        return;
-      }
+    function showErr(id)  { var el = document.getElementById(id); if (el) el.classList.add('show');    else valid = false; valid = false; }
+    function clearErr(id) { var el = document.getElementById(id); if (el) el.classList.remove('show'); }
 
-      // 4. All good — submit
-      var btn = document.getElementById('form-submit-btn');
-      btn.disabled = true;
-      btn.innerHTML = '<svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6" stroke="currentColor" stroke-width="1.5" stroke-dasharray="20" stroke-dashoffset="0"><animateTransform attributeName="transform" type="rotate" from="0 8 8" to="360 8 8" dur="0.8s" repeatCount="indefinite"/></circle></svg> Sending...';
+    if (fname.length < 2)      { showErr('err-fname');   } else clearErr('err-fname');
+    if (lname.length < 2)      { showErr('err-lname');   } else clearErr('err-lname');
+    if (!isValidEmail(email))  { showErr('err-email');   } else clearErr('err-email');
+    if (!type)                 { showErr('err-type');    } else clearErr('err-type');
+    if (subj.length < 5)       { showErr('err-subject'); } else clearErr('err-subject');
+    if (msg.length < 20)       { showErr('err-message'); } else clearErr('err-message');
+    if (cap !== captchaAnswer) { showErr('err-captcha'); genCaptcha(); } else clearErr('err-captcha');
 
-      // Build mailto link as the delivery mechanism (works without a backend)
-      var body = 'Name: ' + fname + ' ' + lname + '%0D%0AEmail: ' + email + '%0D%0AType: ' + type + '%0D%0ASubject: ' + subj + '%0D%0A%0D%0AMessage:%0D%0A' + encodeURIComponent(msg);
-      var mailto = 'mailto:hello@roam-local.co.uk?subject=' + encodeURIComponent('[Roam Contact] ' + subj) + '&body=' + body;
-      window.location.href = mailto;
+    if (!valid) {
+      var firstErr = form.querySelector('.form-field-error.show');
+      if (firstErr) firstErr.scrollIntoView({behavior:'smooth', block:'center'});
+      return;
+    }
 
-      // Show success after short delay
-      setTimeout(showSuccess, 800);
-    });
-  }
+    var btn = document.getElementById('form-submit-btn');
+    if (btn) { btn.disabled = true; btn.textContent = 'Sending...'; }
 
-  function showSuccess() {
+    var body = 'Name: ' + fname + ' ' + lname + '\r\nEmail: ' + email + '\r\nType: ' + type + '\r\nSubject: ' + subj + '\r\n\r\nMessage:\r\n' + msg;
+    window.location.href = 'mailto:hello@roam-local.co.uk?subject=' + encodeURIComponent('[Roam Contact] ' + subj) + '&body=' + encodeURIComponent(body);
+
+    setTimeout(showFormSuccess, 800);
+  });
+
+  function showFormSuccess() {
     var f = document.getElementById('contact-form');
     var s = document.getElementById('form-success');
     if (f) f.style.display = 'none';
     if (s) s.classList.add('show');
-    // Reset progress dots
-    if (dots[0]) { dots[0].className = 'form-step-dot done'; }
-    if (dots[1]) { dots[1].className = 'form-step-dot done'; }
-    if (dots[2]) { dots[2].className = 'form-step-dot done'; }
+    if (dots[0]) dots[0].className = 'form-step-dot done';
+    if (dots[1]) dots[1].className = 'form-step-dot done';
+    if (dots[2]) dots[2].className = 'form-step-dot done';
   }
-
 })();
 
-
-// ── DOWNLOAD MODAL ───────────────────────────────────────────────────────────
-function openDlModal(mode) {
-  var overlay = document.getElementById('dl-modal-overlay');
-  var modal   = document.getElementById('dl-modal');
-  var title   = document.getElementById('dl-modal-title');
-  var sub     = document.getElementById('dl-modal-sub');
-  var note    = document.getElementById('dl-modal-note');
-  var badge   = document.getElementById('dl-modal-free-badge');
-  var icon    = document.getElementById('dl-modal-icon-wrap');
-
-  if (mode === 'business') {
-    modal.classList.add('biz-mode');
-    title.textContent = 'Activate your business';
-    sub.textContent   = 'Download Roam free to claim and activate your business profile in about 90 seconds.';
-    note.textContent  = 'Free to activate · No contracts · Done entirely in-app';
-    badge.textContent = 'Free to activate';
-    icon.innerHTML    = '<svg viewBox="0 0 28 28" fill="none" width="28" height="28"><rect x="4" y="8" width="20" height="15" rx="3" stroke="rgba(255,255,255,0.6)" stroke-width="1.5"/><path d="M9 8V7a5 5 0 0 1 10 0v1" stroke="rgba(255,255,255,0.6)" stroke-width="1.5"/><circle cx="14" cy="15.5" r="2.5" fill="#3abdd6"/></svg>';
-  } else {
-    modal.classList.remove('biz-mode');
-    title.textContent = 'Download Roam';
-    sub.textContent   = 'Choose your device and start discovering what's local — completely free.';
-    note.textContent  = 'Free to download · No subscription required to explore';
-    badge.textContent = 'Free to download';
-    icon.innerHTML    = '<svg viewBox="0 0 28 28" fill="none" width="28" height="28"><circle cx="14" cy="14" r="9" stroke="rgba(255,255,255,0.5)" stroke-width="1.5"/><circle cx="14" cy="14" r="5" stroke="rgba(255,255,255,0.7)" stroke-width="1.5"/><circle cx="14" cy="14" r="2" fill="#fff"/></svg>';
-  }
-
-  overlay.classList.add('open');
-  document.body.style.overflow = 'hidden';
-
-  // Focus trap — focus the first link
-  setTimeout(function() {
-    var first = overlay.querySelector('.dl-option');
-    if (first) first.focus();
-  }, 100);
-}
-
-function closeDlModal() {
-  document.getElementById('dl-modal-overlay').classList.remove('open');
-  document.body.style.overflow = '';
-}
-
-// Close on Escape (in addition to menu close)
-document.addEventListener('keydown', function(e) {
-  if (e.key === 'Escape') {
-    closeDlModal();
-    closeMenu();
-  }
-});
-
-// Scroll-aware nav — add shadow on scroll
-window.addEventListener('scroll', function() {
-  const nav = document.querySelector('nav');
-  if (window.scrollY > 10) {
-    nav.style.boxShadow = '0 4px 24px rgba(0,0,0,0.4)';
-  } else {
-    nav.style.boxShadow = 'none';
-  }
-}, {passive: true});
 </script>
 
 </body>
