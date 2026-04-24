@@ -88,17 +88,6 @@ h1 em{color:var(--red);font-style:normal}
 .stat{background:var(--card-bg);border:1px solid var(--card-border);border-radius:12px;padding:18px;text-align:center}
 .stat-num{font-size:22px;font-weight:800;color:var(--text);display:block}
 .stat-label{font-size:12px;color:var(--muted);display:block;margin-top:4px}
-
-.phones-strip{display:flex;gap:20px;justify-content:center;align-items:flex-end;margin:36px 0;flex-wrap:wrap}
-.phone-wrap{display:flex;flex-direction:column;align-items:center;gap:14px}
-.phone-wrap.phone-mid .phone-frame{transform:scale(1.08);transform-origin:bottom center}
-.phone-frame{width:160px;height:320px;background:linear-gradient(145deg,#2a2a3a,#1a1a28);border-radius:36px;padding:10px;box-shadow:0 24px 60px rgba(0,0,0,0.5),0 0 0 1px rgba(255,255,255,0.08),inset 0 0 0 1px rgba(255,255,255,0.04);position:relative;flex-shrink:0}
-.phone-notch{width:50px;height:14px;background:#0a0a14;border-radius:0 0 10px 10px;margin:0 auto 6px;position:relative;z-index:2}
-.phone-screen{width:100%;height:calc(100% - 20px);border-radius:26px;overflow:hidden;background:#0a0a14}
-.phone-screen img{width:100%;height:100%;object-fit:cover;object-position:top;display:block}
-.phone-label{font-size:13px;color:var(--muted);font-weight:500;text-align:center}
-@media(max-width:600px){.phone-frame{width:130px;height:260px}.phones-strip{gap:12px}}
-
 .cta-block{background:linear-gradient(135deg,rgba(201,27,82,0.14),rgba(58,189,214,0.09));border:1px solid rgba(201,27,82,0.22);border-radius:20px;padding:52px 36px;text-align:center;margin:48px 0 0}
 .badges{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-top:28px}
 .badges img{height:46px;cursor:pointer;border-radius:9px;transition:opacity 0.2s;box-shadow:0 4px 20px rgba(0,0,0,0.3)}
@@ -190,49 +179,6 @@ footer a{color:var(--blue)}
       <div class="stat"><span class="stat-num">62,000</span><span class="stat-label">Population</span></div>
       <div class="stat"><span class="stat-num">10</span><span class="stat-label">Key areas</span></div>
       <div class="stat"><span class="stat-num">Free</span><span class="stat-label">to download</span></div>
-    </div>
-  </section>
-
-  <section class="section" aria-labelledby="app-h2">
-    <h2 id="app-h2">See Roam in <span>action</span></h2>
-    <p>Browse local businesses, discover events and find hidden gems in Scarborough &#8212; all from one beautifully simple app.</p>
-    <div class="phones-strip">
-      <div class="phone-wrap">
-        <div class="phone-frame">
-          <div class="phone-notch"></div>
-          <div class="phone-screen">
-            <img src="https://raw.githubusercontent.com/RoamLocaApp/roam-local-app-website/main/app-screenshots/annon-app-explore-image.PNG" alt="Roam app explore screen" loading="lazy"/>
-          </div>
-        </div>
-        <p class="phone-label">Explore nearby</p>
-      </div>
-      <div class="phone-wrap phone-mid">
-        <div class="phone-frame">
-          <div class="phone-notch"></div>
-          <div class="phone-screen">
-            <img src="https://raw.githubusercontent.com/RoamLocaApp/roam-local-app-website/main/app-screenshots/app-annon-profile.PNG" alt="Roam app profile screen" loading="lazy"/>
-          </div>
-        </div>
-        <p class="phone-label">Your profile</p>
-      </div>
-      <div class="phone-wrap">
-        <div class="phone-frame">
-          <div class="phone-notch"></div>
-          <div class="phone-screen">
-            <img src="https://raw.githubusercontent.com/RoamLocaApp/roam-local-app-website/main/app-screenshots/annon-app-messanger-inbox.PNG" alt="Roam app messenger screen" loading="lazy"/>
-          </div>
-        </div>
-        <p class="phone-label">Local messages</p>
-      </div>
-      <div class="phone-wrap">
-        <div class="phone-frame">
-          <div class="phone-notch"></div>
-          <div class="phone-screen">
-            <img src="https://raw.githubusercontent.com/RoamLocaApp/roam-local-app-website/main/app-screenshots/app-UK-plans.PNG" alt="Roam app UK plans screen" loading="lazy"/>
-          </div>
-        </div>
-        <p class="phone-label">UK plans</p>
-      </div>
     </div>
   </section>
 
@@ -350,9 +296,10 @@ footer a{color:var(--blue)}
 </div>
 
 <div class="search-context" aria-hidden="true" style="font-size:1px;color:transparent;height:0;overflow:hidden;">
-things to do in Scarborough  best restaurants Scarborough  Scarborough independent shops  Scarborough local businesses  visit Scarborough
+things to do in Scarborough  best restaurants Scarborough  Scarborough independent shops  Scarborough local businesses  visit Scarborough  Scarborough food
 </div>
 
+<!-- Download modal -->
 <div id="dlm" role="dialog" aria-modal="true" aria-labelledby="dlm-title" onclick="if(event.target===this)closeDL()">
   <div class="dlm-box">
     <button class="dlm-close" onclick="closeDL()" aria-label="Close">&#x2715;</button>
