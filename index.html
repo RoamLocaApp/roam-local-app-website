@@ -752,7 +752,19 @@ footer{background:#100008;padding:48px 40px 28px;}
   .features-inner{grid-template-columns:1fr;gap:36px;}
   .features-phones{justify-content:center;}
   .features-phones > div{flex:initial;}
-  .ip-stage{max-width:520px;}
+  .ip-stage{max-width:480px;aspect-ratio:1/0.9;}
+  .ip-phone-body{width:160px;}
+  .ip-card{padding:8px 12px 8px 9px;border-radius:12px;}
+  .ip-card-title{font-size:11px;}
+  .ip-card-sub{font-size:10px;}
+  .ip-card-dot{width:22px;height:22px;}
+  .ip-card-tl{top:5%;left:0;}
+  .ip-card-tr{top:7%;right:0;}
+  .ip-chip{padding:6px 14px;font-size:11px;}
+  .ip-pin-tl{top:12%;left:6%;}
+  .ip-pin-tr{top:14%;right:7%;}
+  .ip-pin-bl{bottom:14%;left:5%;}
+  .ip-pin-br{bottom:12%;right:6%;}
   .activate-inner{grid-template-columns:1fr;gap:36px;}
   .activate-phone{display:none;} /* hide phone on tablet activation */
   .hub-inner{grid-template-columns:1fr;gap:28px;}
@@ -820,23 +832,22 @@ footer{background:#100008;padding:48px 40px 28px;}
   .loop-steps{grid-template-columns:1fr;gap:20px;}
   .loop-step{padding:0;}
 
-  /* Features phones: single phone */
+  /* Features phones: simplify on mobile */
   .features-phones > div:last-child{display:initial;}
   .features-phones > div{flex:initial;}
-  .ip-stage{max-width:380px;aspect-ratio:1/1;}
-  .ip-phone-body{width:140px;border-radius:30px;padding:4px;}
-  .ip-phone-body::after{border-radius:30px;}
-  .ip-phone-screen{border-radius:26px;}
-  .ip-phone-island{width:50px;height:14px;top:9px;}
-  .ip-card{padding:7px 12px 7px 8px;border-radius:11px;}
-  .ip-card-title{font-size:10.5px;}
-  .ip-card-sub{font-size:9.5px;}
-  .ip-card-dot{width:20px;height:20px;}
-  .ip-card-tl{top:2%;left:0;}
-  .ip-card-tr{top:4%;right:0;}
-  .ip-chip{padding:6px 13px;font-size:10.5px;}
-  .ip-pin{display:none;}
-  .ip-glow{filter:blur(50px);}
+  .ip-stage{max-width:340px;aspect-ratio:1/0.95;margin:8px auto 0;}
+  .ip-phone-body{width:128px;border-radius:28px;padding:4px;box-shadow:0 28px 55px -14px rgba(0,0,0,0.7),0 16px 30px -8px rgba(201,27,82,0.22),0 0 0 1.2px rgba(255,255,255,0.12),inset 0 0 0 1px rgba(255,255,255,0.06),inset 0 1px 0 0 rgba(255,255,255,0.14);}
+  .ip-phone-body::after{border-radius:28px;}
+  .ip-phone-screen{border-radius:24px;}
+  .ip-phone-island{width:46px;height:14px;top:8px;}
+  .ip-phone-back{transform:translate(-90%,-50%) rotate(-6deg);}
+  .ip-phone-front{transform:translate(-10%,-50%) rotate(5deg);}
+  /* Hide decorations that crowd the small viewport */
+  .ip-card,.ip-chip,.ip-pin{display:none;}
+  .ip-glow{filter:blur(40px);width:62%;}
+  .ip-glow-red{top:14%;left:-12%;}
+  .ip-glow-blue{top:18%;right:-12%;}
+  .ip-pulse{width:10px;height:10px;}
 
   /* Stats bar: 2-col wrap */
   .stat-sep,.proof-sep{display:none;}
