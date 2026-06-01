@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Get the Roam app — Download free on iOS &amp; Android</title>
+<meta name="description" content="Download the free Roam app to discover great local businesses near you. Available on iOS and Android."/>
+<meta name="robots" content="index, follow"/>
+<meta name="author" content="Roam"/>
+<meta name="theme-color" content="#1a0610"/>
+
+<!-- Open Graph -->
+<meta property="og:type" content="website"/>
+<meta property="og:site_name" content="Roam"/>
+<meta property="og:title" content="Get the Roam app"/>
+<meta property="og:description" content="Download the free Roam app to discover great local businesses near you. Free on iOS and Android."/>
+<meta property="og:image" content="https://raw.githubusercontent.com/RoamLocaApp/roam-local-app-website/main/Roam-Logos/roam-logo-white.png"/>
+<meta property="og:url" content="https://roam-local.co.uk/get-the-app"/>
+
+<!-- Twitter / X -->
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:site" content="@RoamLocalApp"/>
+<meta name="twitter:title" content="Get the Roam app"/>
+<meta name="twitter:description" content="Download the free Roam app to discover great local businesses near you."/>
+<meta name="twitter:image" content="https://raw.githubusercontent.com/RoamLocaApp/roam-local-app-website/main/Roam-Logos/roam-logo-white.png"/>
+
+<link rel="canonical" href="https://roam-local.co.uk/get-the-app"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link rel="preload" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'"/>
+<noscript><link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet"/></noscript>
+<link rel="icon" type="image/png" href="https://raw.githubusercontent.com/RoamLocaApp/roam-local-app-website/main/Roam-Logos/Logo-Roam-fav-icon.png"/>
+<link rel="apple-touch-icon" href="https://raw.githubusercontent.com/RoamLocaApp/roam-local-app-website/main/Roam-Logos/Logo-Roam-fav-icon.png"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{
+  font-family:'DM Sans',sans-serif;color:#fff;
+  background:radial-gradient(1200px 600px at 50% -10%, #2a0a18 0%, #1a0610 55%, #100008 100%);
+  min-height:100vh;-webkit-font-smoothing:antialiased;line-height:1.6;
+  display:flex;flex-direction:column;
+}
+a{text-decoration:none;color:inherit;}
+img{display:block;max-width:100%;}
+:root{
+  --plum:#1a0610;--red:#c91b52;--red-deep:#6b0f2b;--red-light:#e8557a;
+  --red-pale:#fde8ee;--blue:#3abdd6;--max:980px;--r:12px;
+}
+
+/* NAV */
+nav{
+  position:sticky;top:0;z-index:50;
+  background:rgba(26,6,16,0.85);backdrop-filter:blur(10px);
+  border-bottom:1px solid rgba(201,27,82,0.22);
+  height:58px;display:flex;align-items:center;padding:0 24px;
+}
+.nav-inner{
+  width:100%;max-width:var(--max);margin:0 auto;
+  display:flex;align-items:center;justify-content:space-between;gap:16px;
+}
+.nav-logo{display:flex;align-items:center;gap:10px;}
+.nav-logo-text{font-size:20px;font-weight:700;color:#fff;letter-spacing:-0.5px;}
+.nav-back{
+  font-size:13px;color:rgba(255,255,255,0.6);transition:color 0.15s;white-space:nowrap;
+}
+.nav-back:hover{color:#fff;}
+
+/* HERO */
+.wrap{flex:1;width:100%;max-width:var(--max);margin:0 auto;padding:56px 24px 40px;}
+.hero{text-align:center;}
+.badge{
+  display:inline-block;background:rgba(201,27,82,0.16);
+  border:1px solid rgba(232,85,122,0.4);color:var(--red-light);
+  font-size:12px;font-weight:600;letter-spacing:0.4px;
+  padding:6px 14px;border-radius:30px;margin-bottom:20px;
+}
+h1{
+  font-size:clamp(30px,6vw,52px);font-weight:700;line-height:1.08;
+  letter-spacing:-1px;margin-bottom:16px;
+}
+h1 .accent{color:var(--red-light);}
+.sub{
+  font-size:clamp(15px,2.2vw,18px);color:rgba(255,255,255,0.62);
+  max-width:520px;margin:0 auto 32px;line-height:1.6;
+}
+
+/* STORE BUTTONS */
+.stores{
+  display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-bottom:14px;
+}
+.store-btn{
+  display:flex;align-items:center;gap:14px;
+  background:#fff;color:var(--plum);
+  padding:13px 22px 13px 18px;border-radius:14px;
+  border:2px solid transparent;
+  transition:transform 0.15s, box-shadow 0.15s;
+  box-shadow:0 8px 24px rgba(0,0,0,0.25);min-width:210px;
+}
+.store-btn:hover{transform:translateY(-2px);box-shadow:0 12px 30px rgba(0,0,0,0.35);}
+.store-btn img{height:34px;width:auto;border-radius:7px;flex-shrink:0;}
+.store-btn .st{font-size:11px;font-weight:500;color:#777;text-transform:uppercase;letter-spacing:0.6px;}
+.store-btn .lg{font-size:18px;font-weight:700;color:var(--plum);line-height:1.1;}
+.store-btn.recommended{border-color:var(--red);box-shadow:0 12px 34px rgba(201,27,82,0.4);}
+.store-btn .pill{
+  display:none;font-size:9px;font-weight:700;background:var(--red);color:#fff;
+  padding:2px 7px;border-radius:20px;text-transform:uppercase;letter-spacing:0.5px;
+  margin-left:auto;align-self:flex-start;
+}
+.store-btn.recommended .pill{display:inline-block;}
+.store-txt{display:flex;flex-direction:column;align-items:flex-start;}
+.note{font-size:12px;color:rgba(255,255,255,0.4);margin-top:6px;}
+
+/* SCREENSHOTS */
+.shots{
+  display:flex;gap:16px;justify-content:center;align-items:flex-end;
+  margin-top:52px;flex-wrap:wrap;
+}
+.shot{
+  width:200px;border-radius:22px;overflow:hidden;
+  border:1px solid rgba(255,255,255,0.1);
+  box-shadow:0 16px 40px rgba(0,0,0,0.4);
+  background:#100008;
+}
+.shot.mid{transform:scale(1.06);z-index:2;}
+
+/* FEATURES */
+.features{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:18px;
+  margin-top:60px;
+}
+.feature{
+  background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);
+  border-radius:var(--r);padding:22px 20px;
+}
+.feature-ic{
+  width:38px;height:38px;border-radius:10px;background:rgba(201,27,82,0.18);
+  display:flex;align-items:center;justify-content:center;margin-bottom:14px;
+}
+.feature-ic svg{width:18px;height:18px;}
+.feature h3{font-size:15px;font-weight:700;margin-bottom:6px;}
+.feature p{font-size:13px;color:rgba(255,255,255,0.5);line-height:1.55;}
+
+/* FOOTER */
+footer{
+  border-top:1px solid rgba(255,255,255,0.07);
+  padding:26px 24px;text-align:center;
+}
+.footer-inner{max-width:var(--max);margin:0 auto;}
+.footer-links{display:flex;gap:22px;justify-content:center;flex-wrap:wrap;margin-bottom:12px;}
+.footer-links a{font-size:13px;color:rgba(255,255,255,0.45);transition:color 0.15s;}
+.footer-links a:hover{color:#fff;}
+.footer-copy{font-size:12px;color:rgba(255,255,255,0.3);}
+
+@media(max-width:640px){
+  .wrap{padding:40px 20px 32px;}
+  .features{grid-template-columns:1fr;}
+  .shot{width:150px;}
+  .shot.mid{transform:scale(1.04);}
+  .store-btn{min-width:0;flex:1 1 100%;justify-content:center;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a class="nav-logo" href="/" aria-label="Roam home">
+      <img src="https://raw.githubusercontent.com/RoamLocaApp/roam-local-app-website/main/Roam-Logos/roam-logo-white.png" alt="Roam" style="height:28px;width:auto;" onerror="this.style.display='none';this.nextElementSibling.style.display='block';"/>
+      <span class="nav-logo-text" style="display:none;">roam</span>
+    </a>
+    <a class="nav-back" href="/">&larr; Back to roam-local.co.uk</a>
+  </div>
+</nav>
+
+<main class="wrap">
+  <section class="hero">
+    <span class="badge">Free to download · iOS &amp; Android</span>
+    <h1>Get the <span class="accent">Roam</span> app</h1>
+    <p class="sub">Become a local everywhere. Discover great local businesses near you, plan your travels, and connect with your community — all from one free app.</p>
+
+    <div class="stores" id="stores">
+      <a class="store-btn" id="ios-btn" href="https://apps.apple.com/gb/app/roam/id1137901874" target="_blank" rel="noopener">
+        <img src="https://raw.githubusercontent.com/RoamLocaApp/roam-local-app-website/main/Roam-Logos/apple-app-store-icon.png" alt="App Store"/>
+        <span class="store-txt">
+          <span class="st">Download on the</span>
+          <span class="lg">App Store</span>
+        </span>
+        <span class="pill">For your device</span>
+      </a>
+      <a class="store-btn" id="android-btn" href="https://play.google.com/store/apps/details?id=com.roar.app" target="_blank" rel="noopener">
+        <img src="https://raw.githubusercontent.com/RoamLocaApp/roam-local-app-website/main/Roam-Logos/android-app-store-icon.png" alt="Google Play"/>
+        <span class="store-txt">
+          <span class="st">Get it on</span>
+          <span class="lg">Google Play</span>
+        </span>
+        <span class="pill">For your device</span>
+      </a>
+    </div>
+    <p class="note">Free to download · No contracts · iPhone, iPad &amp; Android</p>
+
+    <div class="shots">
+      <img class="shot" loading="lazy" src="https://raw.githubusercontent.com/RoamLocaApp/roam-local-app-website/main/app-screenshots/annon-app-explore-image.PNG" alt="Roam explore screen" onerror="this.style.display='none'"/>
+      <img class="shot mid" loading="lazy" src="https://raw.githubusercontent.com/RoamLocaApp/roam-local-app-website/main/app-screenshots/app-homepage.PNG" alt="Roam home screen"/>
+      <img class="shot" loading="lazy" src="https://raw.githubusercontent.com/RoamLocaApp/roam-local-app-website/main/app-screenshots/app-travel-plans.PNG" alt="Roam travel plans screen"/>
+    </div>
+  </section>
+
+  <section class="features">
+    <div class="feature">
+      <div class="feature-ic"><svg viewBox="0 0 24 24" fill="none"><path d="M12 21s-7-5.2-7-11a7 7 0 1114 0c0 5.8-7 11-7 11z" stroke="#e8557a" stroke-width="1.8" stroke-linejoin="round"/><circle cx="12" cy="10" r="2.4" stroke="#e8557a" stroke-width="1.8"/></svg></div>
+      <h3>Discover what's nearby</h3>
+      <p>Find great local businesses, hidden gems and things to do wherever you are.</p>
+    </div>
+    <div class="feature">
+      <div class="feature-ic"><svg viewBox="0 0 24 24" fill="none"><path d="M3 11l18-7-7 18-3-8-8-3z" stroke="#e8557a" stroke-width="1.8" stroke-linejoin="round"/></svg></div>
+      <h3>Plan your travels</h3>
+      <p>Save places, build travel plans and become a local everywhere you go.</p>
+    </div>
+    <div class="feature">
+      <div class="feature-ic"><svg viewBox="0 0 24 24" fill="none"><path d="M17 21v-2a4 4 0 00-4-4H6a4 4 0 00-4 4v2" stroke="#e8557a" stroke-width="1.8" stroke-linecap="round"/><circle cx="9.5" cy="7.5" r="3.5" stroke="#e8557a" stroke-width="1.8"/><path d="M22 21v-2a4 4 0 00-3-3.87M16 3.13A4 4 0 0116 11" stroke="#e8557a" stroke-width="1.8" stroke-linecap="round"/></svg></div>
+      <h3>Connect with locals</h3>
+      <p>Message businesses, join the community and explore through local eyes.</p>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-links">
+      <a href="/">Home</a>
+      <a href="/cities/">UK Cities</a>
+      <a href="https://apps.apple.com/gb/app/roam/id1137901874" target="_blank" rel="noopener">App Store</a>
+      <a href="https://play.google.com/store/apps/details?id=com.roar.app" target="_blank" rel="noopener">Google Play</a>
+    </div>
+    <p class="footer-copy">&copy; <span id="yr">2026</span> Roam. Become a local everywhere.</p>
+  </div>
+</footer>
+
+<script>
+// Highlight the store that matches the visitor's device
+(function(){
+  document.getElementById('yr').textContent = new Date().getFullYear();
+  var ua = navigator.userAgent || navigator.vendor || '';
+  var isIOS = /iPad|iPhone|iPod/.test(ua) || (/Macintosh/.test(ua) && 'ontouchend' in document);
+  var isAndroid = /Android/i.test(ua);
+  var ios = document.getElementById('ios-btn');
+  var android = document.getElementById('android-btn');
+  var stores = document.getElementById('stores');
+  if(isIOS){
+    ios.classList.add('recommended');
+    stores.prepend(ios);
+  } else if(isAndroid){
+    android.classList.add('recommended');
+    stores.prepend(android);
+  }
+})();
+</script>
+
+</body>
+</html>
